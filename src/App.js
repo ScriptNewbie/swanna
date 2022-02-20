@@ -1,25 +1,187 @@
-import logo from './logo.svg';
-import './App.css';
+import Menu from "./components/menu";
+import { withRouter } from "react-router";
+import { Route, Switch } from "react-router-dom";
+import Homepage from "./components/homepage";
+import Ogloszenia from "./components/ogloszenia";
+import Historia from "./components/historia";
+import Kontakt from "./components/kontakt";
+import React, { Component } from "react";
+import $ from "jquery";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const resize_duration = 1000;
+let ready = true;
+
+class App extends Component {
+  state = {
+    style: {
+      start_width: 740,
+      end_width: 740,
+      start_height: 800,
+      end_height: 800,
+    },
+    current_ogloszenie: 0,
+    ogloszenia_clicked: false,
+    demandNewText: "Zgłoś brak aktualnych ogłoszeń!",
+  };
+
+  componentDidMount = () => {
+    $("a").click((e) => {
+      if (e.button === 0 && !e.metaKey && !e.target.getAttribute("target")) {
+        e.preventDefault();
+        if (ready) {
+          const href = e.target.getAttribute("href");
+          const current = this.props.location.pathname;
+          if (current !== href && href) {
+            let del = 200;
+            if (href === "/nabozenstwa") del = 400;
+            var body = $("html, body");
+            body.stop().animate({ scrollTop: 0 }, 10, "swing", () => {
+              $("#fade").removeClass("fadein");
+              if (href === "/nabozenstwa") {
+                $("#maincontent").css({
+                  animation: "fadeout 400ms 1",
+                  opacity: 0,
+                });
+              } else $("#fade").addClass("fadeout");
+              setTimeout(() => {
+                this.props.history.push(href);
+              }, del);
+            });
+          }
+        }
+      }
+    });
+  };
+
+  setStyle = (width, height) => {
+    const style = {
+      start_width: this.state.style.end_width,
+      end_width: width,
+      start_height: this.state.style.end_height,
+      end_height: height,
+    };
+    this.setState({ style }, () => {
+      ready = false;
+      $("#maincontent").addClass("resize");
+      $("#fade").addClass("fadein");
+      $("#fade").removeClass("fadeout");
+      setTimeout(() => {
+        $("#maincontent").removeClass("resize");
+        ready = true;
+      }, resize_duration);
+    });
+  };
+
+  setOgloszeniaUnclicked = () => {
+    this.setState({ ogloszenia_clicked: false });
+  };
+
+  getStyle = () => {
+    const style = {
+      "--start_width": this.state.style.start_width.toString() + "px",
+      "--end_width": this.state.style.end_width.toString() + "px",
+      "--start_height": this.state.style.start_height.toString() + "px",
+      "--end_height": this.state.style.end_height.toString() + "px",
+      "--resize_duration": resize_duration.toString() + "ms",
+    };
+    return style;
+  };
+  render() {
+    return (
+      <div>
+        <div id="ogloszenia" className="none z1">
+          <span id="pdfs">
+            <iframe
+              title={"pdf" + Date.now().toString()}
+              id="pdf"
+              src="https://docs.google.com/gview?url=https://swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
+            ></iframe>
+            <iframe
+              title={"pdf1" + Date.now().toString()}
+              id="pdf1"
+              src="https://docs.google.com/gview?url=https://swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
+            ></iframe>
+          </span>
+          <div
+            className="next"
+            onClick={() => {
+              this.setState({
+                current_ogloszenie: !this.state.current_ogloszenie,
+                ogloszenia_clicked: true,
+              });
+              if (this.state.current_ogloszenie) {
+                $("#after").fadeOut(400, () => {
+                  $("#after").addClass("afternext");
+                  $("#after").removeClass("afterback");
+                  $("#after").fadeIn(200);
+                });
+              } else {
+                $("#after").fadeOut(400, () => {
+                  $("#after").addClass("afterback");
+                  $("#after").removeClass("afternext");
+                  $("#after").fadeIn(200);
+                });
+              }
+            }}
+          >
+            <span id="after" className="afternext"></span>
+          </div>
+          <div
+            className="demandNew"
+            onClick={async () => {
+              const { data: demandNewText } = await axios.get(
+                "https://swanna.net.pl/backend/mail.php"
+              );
+              this.setState({ demandNewText });
+            }}
+          >
+            {this.state.demandNewText}
+          </div>
+          <div
+            onClick={() => {
+              window.open("https://swanna.net.pl/ogloszenia/ogloszenia.pdf");
+            }}
+            className="iCannotSee"
+          >
+            Nie widzę ogłoszeń!
+          </div>
+        </div>
+        <div id="top">
+          <Menu />
+        </div>
+        <div id="maincontent" style={this.getStyle()}>
+          <div id="fade">
+            <Switch>
+              <Route
+                path="/kontakt"
+                render={() => <Kontakt setStyle={this.setStyle} />}
+              />
+              <Route
+                path="/historia"
+                render={() => <Historia setStyle={this.setStyle} />}
+              />
+              <Route
+                path="/nabozenstwa"
+                render={() => (
+                  <Ogloszenia
+                    current={this.state.current_ogloszenie}
+                    clicked={this.state.ogloszenia_clicked}
+                    setUnclicked={this.setOgloszeniaUnclicked}
+                  />
+                )}
+              />
+              <Route
+                path=""
+                render={() => <Homepage setStyle={this.setStyle} />}
+              />
+            </Switch>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+const Appk = withRouter(App);
+export default Appk;
