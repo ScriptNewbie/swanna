@@ -22,7 +22,7 @@ class App extends Component {
     },
     current_ogloszenie: 0,
     ogloszenia_clicked: false,
-    demandNewText: "Zgłoś brak aktualnych ogłoszeń!",
+    demandNewText: "",
   };
 
   componentDidMount = () => {
@@ -88,6 +88,10 @@ class App extends Component {
     return style;
   };
   render() {
+    let statusStyle = "alert alert-";
+    if (this.state.demandNewText === "Dziękujemy za wysłanie zgłoszenia!")
+      statusStyle += "success";
+    else statusStyle += "secondary";
     return (
       <div>
         <div id="ogloszenia" className="none z1">
@@ -129,14 +133,14 @@ class App extends Component {
           </div>
           <div
             className="demandNew"
-            onClick={async () => {
-              const { data: demandNewText } = await axios.get(
-                "https://swanna.net.pl/backend/mail.php"
-              );
-              this.setState({ demandNewText });
+            onClick={() => {
+              $("#modalDemandNew").css({
+                display: "block",
+                animation: "fadein 500ms 1",
+              });
             }}
           >
-            {this.state.demandNewText}
+            Zgłoś nieaktualne ogłoszenia
           </div>
           <div
             onClick={() => {
@@ -176,6 +180,51 @@ class App extends Component {
                 render={() => <Homepage setStyle={this.setStyle} />}
               />
             </Switch>
+          </div>
+        </div>
+        <div id="modalDemandNew">
+          <div className="card">
+            <div className="card-header">Zgłoś nieaktualne ogłoszenia</div>
+            <div className="card-body">
+              <p className="card-text">
+                {this.state.demandNewText && (
+                  <div class={statusStyle} role="alert">
+                    {this.state.demandNewText}
+                  </div>
+                )}
+                Uwaga! Jeżeli w ogóle nie widzisz ogłoszeń na stronie,
+                skorzystaj z opcji "Nie widzę ogłoszeń"! Ta opcja służy tylko i
+                wyłącznie do zgłaszania nieaktualnych ogłoszeń!
+              </p>
+              <button
+                className="btn btn-secondary m-2"
+                onClick={() => {
+                  setTimeout(() => {
+                    $("#modalDemandNew").css({
+                      display: "none",
+                    });
+                  }, 500);
+                  $("#modalDemandNew").css({
+                    animation: "fadeout 500ms 1",
+                  });
+                }}
+              >
+                Zamknij okno
+              </button>
+              {!this.state.demandNewText && (
+                <button
+                  onClick={async () => {
+                    const { data: demandNewText } = await axios.get(
+                      "https://swanna.net.pl/backend/mail.php"
+                    );
+                    this.setState({ demandNewText });
+                  }}
+                  className="btn btn-success m-2"
+                >
+                  Rozumiem. Wyślij zgłoszenie!
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

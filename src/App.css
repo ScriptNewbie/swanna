@@ -395,6 +395,14 @@ td {
 
 /* Ogloszenia  - część nadal moe być w sekcji ogólnej*/
 
+#modalDemandNew {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
 .next {
   text-align: center;
   width: 200px;
@@ -440,11 +448,11 @@ td {
 }
 
 .afternext::after {
-  content: "Następny tydzień";
+  content: "Nast\0119pny tydzie\0144";
 }
 
 .afterback::after {
-  content: "Wróć";
+  content: "Wr\00F3\0107";
 }
 
 @media (max-width: 991px) {
@@ -455,6 +463,10 @@ td {
     bottom: 0 !important;
   }
 
+  #modalDemandNew button {
+    width: 100%;
+    margin-left: 0 !important;
+  }
   .demandNew {
     position: relative !important;
     width: 100%;
