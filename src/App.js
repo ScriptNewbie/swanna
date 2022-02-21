@@ -97,12 +97,10 @@ class App extends Component {
         <div id="ogloszenia" className="none z1">
           <span id="pdfs">
             <iframe
-              title={"pdf" + Date.now().toString()}
               id="pdf"
               src="https://docs.google.com/gview?url=https://swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
             ></iframe>
             <iframe
-              title={"pdf1" + Date.now().toString()}
               id="pdf1"
               src="https://docs.google.com/gview?url=https://swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
             ></iframe>
@@ -221,7 +219,7 @@ class App extends Component {
                   }}
                   className="btn btn-success m-2"
                 >
-                  Rozumiem. Wyślij zgłoszenie!
+                  Wyślij zgłoszenie!
                 </button>
               )}
             </div>
