@@ -42,6 +42,21 @@ const resze = () => {
 
 class Ogloszenia extends Component {
   async componentDidMount() {
+    $("#msze").addClass("mszeNabFlag");
+    $("#msze").removeClass("mszeBackNab");
+    $("#msze").removeClass("mszeBackHist");
+    if ($(".mszeHistFlag").length > 0) {
+      $("#msze").removeClass("mszeHistFlag");
+      $("#msze").addClass("mszeHideFromHist");
+      setTimeout(() => {
+        $("#msze").addClass("mszeHidden");
+      }, 1000);
+    } else {
+      $("#msze").addClass("mszeHide");
+      setTimeout(() => {
+        $("#msze").addClass("mszeHidden");
+      }, 1000);
+    }
     $("#ogloszenia").removeClass("z1");
     $("#ogloszenia").removeClass("none");
     if (window.matchMedia("(min-width: 992px)").matches) {
@@ -71,6 +86,11 @@ class Ogloszenia extends Component {
   }
 
   componentWillUnmount() {
+    $("#msze").addClass("mszeBackNab");
+    $("#msze").removeClass("mszeHide");
+    $("#msze").removeClass("mszeHideFromHist");
+    $("#msze").removeClass("mszeHidden");
+
     $("#top").addClass("show");
     $("#top").removeClass("hide");
     $("#ogloszenia").css({

@@ -4,9 +4,31 @@ import $ from "jquery";
 class Historia extends Component {
   state = {};
   componentDidMount() {
+    $("#msze").addClass("mszeHistFlag");
+    $("#msze").removeClass("mszeBackHist");
+    if ($(".mszeNabFlag").length > 0) {
+      $("#msze").removeClass("mszeNabFlag");
+      $("#msze").addClass("mszeHistAnimFromNab");
+      setTimeout(() => {
+        $("#msze").addClass("mszeHist");
+      }, 1000);
+    } else {
+      $("#msze").addClass("mszeHistAnim");
+      setTimeout(() => {
+        $("#msze").addClass("mszeHist");
+      }, 1000);
+    }
     let height = $("#historiaContent")[0].offsetHeight + 30;
     this.props.setStyle(500, height);
   }
+
+  componentWillUnmount() {
+    $("#msze").addClass("mszeBackHist");
+    $("#msze").removeClass("mszeHistAnim");
+    $("#msze").removeClass("mszeHistAnimFromNab");
+    $("#msze").removeClass("mszeHist");
+  }
+
   render() {
     return (
       <div id="historiaContent">

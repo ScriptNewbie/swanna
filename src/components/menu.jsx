@@ -61,7 +61,7 @@ class Menu extends Component {
                     Aktualności
                   </Link>
                   <Link className="nav-link" to="nabozenstwa">
-                    Porządek naborzeństw
+                    Porządek nabożeństw
                   </Link>
                   <Link className="nav-link" to="historia">
                     Historia kościoła

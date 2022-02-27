@@ -8,6 +8,7 @@ import Kontakt from "./components/kontakt";
 import React, { Component } from "react";
 import $ from "jquery";
 import axios from "axios";
+import LeftPanel from "./components/leftpanel";
 
 const resize_duration = 1000;
 let ready = true;
@@ -152,6 +153,7 @@ class App extends Component {
         <div id="top">
           <Menu />
         </div>
+        <LeftPanel />
         <div id="maincontent" style={this.getStyle()}>
           <div id="fade">
             <Switch>

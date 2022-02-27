@@ -538,3 +538,147 @@ td {
     display: none;
   }
 }
+
+/* lewy panel */
+#msze {
+  position: absolute;
+  top: 210px;
+  left: 50%;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  transform: translateX(-600px);
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  line-height: 1rem;
+}
+
+#msze span {
+  color: gold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#msze a {
+  color: gold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#msze a:visited {
+  color: gold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1240px) {
+  #msze {
+    display: none;
+  }
+}
+
+.mszeHide {
+  animation: hideMsze 1s 1;
+}
+.mszeHidden {
+  left: 400px !important;
+}
+
+@keyframes hideMsze {
+  100% {
+    left: 400px;
+  }
+}
+
+.mszeBackNab {
+  animation: mszeBackNab 1000ms 1;
+}
+
+@keyframes mszeBackNab {
+  0% {
+    left: 400px;
+  }
+  100% {
+    left: 50%;
+  }
+}
+
+.mszeHist {
+  transform: translateX(-465px) !important;
+}
+
+.mszeHistAnim {
+  animation: mszeHistAnim 1s 1;
+}
+
+@keyframes mszeHistAnim {
+  100% {
+    transform: translateX(-465px);
+  }
+}
+
+.mszeBackHist {
+  animation: mszeBackHist 1s 1;
+}
+
+@keyframes mszeBackHist {
+  0% {
+    transform: translateX(-465px);
+  }
+  100% {
+    transform: translateX(-600px);
+  }
+}
+
+.mszeHideFromHist {
+  animation: hideMszeFromHist 1s 1;
+}
+@keyframes hideMszeFromHist {
+  0% {
+    transform: translateX(-465px);
+  }
+  100% {
+    left: 400px;
+    transform: translateX(-600px);
+  }
+}
+
+.mszeHistAnimFromNab {
+  animation: mszeHistAnimFromNab 1s 1;
+}
+
+@keyframes mszeHistAnimFromNab {
+  0% {
+    left: 400px;
+  }
+  100% {
+    left: 50%;
+    transform: translateX(-465px);
+  }
+}
+
+#kosMapContainer {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(240, 240, 240);
+  position: fixed;
+  display: none;
+  z-index: 9999 !important;
+}
+
+#kapMapContainer {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(240, 240, 240);
+  position: fixed;
+  display: none;
+  z-index: 9999 !important;
+}
