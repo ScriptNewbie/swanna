@@ -40,5 +40,68 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <div
+      style="
+        position: fixed;
+        bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <div
+        id="oldBrowserPrompt"
+        style="
+          position: relative;
+          background-color: rgb(116, 126, 155);
+          font-size: 1.5rem;
+          text-align: center;
+          color: cornsilk;
+          align-self: center;
+          padding: 10px;
+          border-radius: 5px;
+          width: 90%;
+        "
+      >
+        <div style="margin-right: 45px">
+          Nie widzisz strony?
+          <a
+            style="color: gold; text-decoration: none"
+            href="http://old.swanna.net.pl"
+            target="_self"
+            >Przejdź na stronę dla starszych urządzeń!</a
+          >
+        </div>
+        <span
+          style="
+            position: absolute;
+            right: 10px;
+            border-style: solid;
+            width: 40px;
+            cursor: pointer;
+            border-radius: 5px;
+            top: 8px;
+          "
+          onclick="closeOldBrowserPrompt()"
+        >
+          x
+        </span>
+        <script>
+          if (document.cookie === "oldbrowser=closed") {
+            document.getElementById("oldBrowserPrompt").style.display = "none";
+          }
+          function closeOldBrowserPrompt() {
+            document
+              .getElementById("oldBrowserPrompt")
+              .classList.add("fadeout");
+            setTimeout(() => {
+              document.getElementById("oldBrowserPrompt").style.display =
+                "none";
+            }, 500);
+            document.cookie = "oldbrowser=closed";
+          }
+        </script>
+      </div>
+    </div>
   </body>
 </html>

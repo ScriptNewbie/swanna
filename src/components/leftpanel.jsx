@@ -11,10 +11,10 @@ class LeftPanel extends Component {
   };
 
   closeKosMap = () => {
-    $("#kosMapContainer").css({ animation: "fadeout 200ms 1" });
+    $("#kosMapContainer").css({ animation: "fadeout 500ms 1" });
     setTimeout(() => {
       $("#kosMapContainer").css({ display: "none" });
-    }, 200);
+    }, 500);
   };
 
   showKapMap = () => {
@@ -25,10 +25,10 @@ class LeftPanel extends Component {
   };
 
   closeKapMap = () => {
-    $("#kapMapContainer").css({ animation: "fadeout 200ms 1" });
+    $("#kapMapContainer").css({ animation: "fadeout 500ms 1" });
     setTimeout(() => {
       $("#kapMapContainer").css({ display: "none" });
-    }, 200);
+    }, 500);
   };
 
   componentDidMount() {
