@@ -18,7 +18,7 @@ const resze = () => {
       apld = false;
     }
     const ph = $("#pdf").width();
-    $("#ogloszenia").css({ height: ph * 3 });
+    $("#ogloszenia").css({ height: ph * 3.5 });
   } else {
     if (!apld) {
       $("#maincontent").css({ display: "none" });
@@ -80,7 +80,7 @@ class Ogloszenia extends Component {
       $(".demandNew").insertBefore("#pdfs");
       $(".iCannotSee").insertBefore("#pdfs");
       $("#ogloszenia").insertBefore("#infoContent");
-      $("#ogloszenia").css({ height: ph * 2.6, opacity: 1 });
+      $("#ogloszenia").css({ height: ph * 3.5, opacity: 1 });
     }
     $(window).resize(resze);
   }
