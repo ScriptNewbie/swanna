@@ -177,7 +177,12 @@ class App extends Component {
               />
               <Route
                 path=""
-                render={() => <Homepage setStyle={this.setStyle} />}
+                render={() => (
+                  <Homepage
+                    setStyle={this.setStyle}
+                    history={this.props.history}
+                  />
+                )}
               />
             </Switch>
           </div>

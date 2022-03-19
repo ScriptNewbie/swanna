@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import $ from "jquery";
 import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
+import tools from "../tools/tools";
 
 let blockHome = false;
 class Homepage extends Component {
@@ -15,7 +16,7 @@ class Homepage extends Component {
       nazwa: "Dane parafii",
       data: "Przypięty",
       tresc:
-        "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstonie kontakt!",
+        "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie <a id='redirectToContacts' href='/kontakt'>kontakt!</a>",
     };
     try {
       const { data: content } = await axios.get(
@@ -33,7 +34,11 @@ class Homepage extends Component {
             "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
         },
       ];
-      this.setState({ content });
+      this.setState({ content }, () => {
+        $("#redirectToContacts").click((e) => {
+          tools.changeScreen(e, "/kontakt", this.props.history);
+        });
+      });
     }
   };
   componentDidUpdate() {
