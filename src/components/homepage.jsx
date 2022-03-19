@@ -15,7 +15,7 @@ class Homepage extends Component {
       nazwa: "Dane parafii",
       data: "Przypięty",
       tresc:
-        "<b>Adres kościoła pw. Świętej Anny:</b><br />ul. Gliwicka 30<br />42-600 Tarnowskie Góry<br /><b>Adres probostwa, kancelarii oraz kaplicy pw. Świętej Jadwigi:</b><br />ul. Torowa 45<br />42-600 Tarnowskie Góry<br /><b>Godziny pracy kancelari:</b><br />Poniedziałek 12:00 - 15:00<br />Piątek 15:00 - 17:00<br /><b>e-mail:</b> kontakt@swanna.net.pl <br /><b>Tel.</b> +48 32 285 85 47 <br /><b>Numer konta bankowego parafii:</b> PL 42 1050 1230 1000 0090 3256 7647",
+        "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstonie kontakt!",
     };
     try {
       const { data: content } = await axios.get(
@@ -30,7 +30,7 @@ class Homepage extends Component {
           nazwa: "Błąd połączenia z bazą danych",
           data: "01/01/1970",
           tresc:
-            "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemoliwe. Pozostałe podstrony powinny działać poprawnie.",
+            "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
         },
       ];
       this.setState({ content });
