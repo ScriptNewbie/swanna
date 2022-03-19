@@ -61,11 +61,13 @@
           background-color: rgb(116, 126, 155);
           font-size: 1.5rem;
           text-align: center;
-          color: cornsilk;
+          color: white;
           align-self: center;
           padding: 10px;
           border-radius: 5px;
           width: 90%;
+          border-style: solid;
+          border-color: white;
         "
       >
         <div style="margin-right: 45px">
@@ -92,7 +94,7 @@
           x
         </span>
         <script>
-          if (document.cookie === "oldbrowser=closed") {
+          if (document.cookie.includes("oldbrowser=closed")) {
             document.getElementById("oldBrowserPrompt").style.display = "none";
           }
           function closeOldBrowserPrompt() {
