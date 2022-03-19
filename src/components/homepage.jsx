@@ -5,6 +5,7 @@ import ReactHtmlParser from "react-html-parser";
 import tools from "../tools/tools";
 
 let blockHome = false;
+let isAttached = false;
 class Homepage extends Component {
   state = { content: [] };
   componentDidMount = async () => {
@@ -16,7 +17,7 @@ class Homepage extends Component {
       nazwa: "Dane parafii",
       data: "Przypięty",
       tresc:
-        "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie <a id='redirectToContacts' href='/kontakt'>kontakt!</a>",
+        "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie <a id='redToCon' href='/kontakt'>kontakt!</a>",
     };
     try {
       const { data: content } = await axios.get(
@@ -34,14 +35,16 @@ class Homepage extends Component {
             "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
         },
       ];
-      this.setState({ content }, () => {
-        $("#redirectToContacts").click((e) => {
-          tools.changeScreen(e, "/kontakt", this.props.history);
-        });
-      });
+      this.setState({ content });
     }
   };
   componentDidUpdate() {
+    if (!isAttached) {
+      $("#redToCon").click((e) => {
+        tools.changeScreen(e, "/kontakt", this.props.history);
+        isAttached = true;
+      });
+    }
     if (!blockHome) {
       let height = $("#newsContent")[0].offsetHeight + 30;
       if (height > 30) {
@@ -54,6 +57,7 @@ class Homepage extends Component {
 
   componentWillUnmount() {
     $("#maincontent").css({ height: "" });
+    isAttached = false;
   }
 
   render() {
