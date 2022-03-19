@@ -207,7 +207,7 @@ class Kontakt extends Component {
           <div id="mobile">
             <b>Adres kościoła pw. Świętej Anny:</b>
             <br />
-            <div id="redirectToContacts">ul. Gliwicka 30</div>
+            ul. Gliwicka 30
             <br />
             42-600 Tarnowskie Góry
             <br />
