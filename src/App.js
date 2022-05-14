@@ -143,7 +143,9 @@ class App extends Component {
           </div>
           <div
             onClick={() => {
-              window.open("https://swanna.net.pl/ogloszenia/ogloszenia.pdf");
+              window.open(
+                "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf"
+              );
             }}
             className="iCannotSee"
           >
@@ -220,7 +222,7 @@ class App extends Component {
                 <button
                   onClick={async () => {
                     const { data: demandNewText } = await axios.get(
-                      "https://swanna.net.pl/backend/mail.php"
+                      "https://api.swanna.net.pl/backend/mail.php"
                     );
                     this.setState({ demandNewText });
                   }}
