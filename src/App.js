@@ -99,11 +99,11 @@ class App extends Component {
           <span id="pdfs">
             <iframe
               id="pdf"
-              src="https://docs.google.com/gview?url=https://swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
+              src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
             ></iframe>
             <iframe
               id="pdf1"
-              src="https://docs.google.com/gview?url=https://swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
+              src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
             ></iframe>
           </span>
           <div

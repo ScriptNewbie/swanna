@@ -211,11 +211,29 @@ class Kontakt extends Component {
             <br />
             42-600 Tarnowskie Góry
             <br />
+            <a
+              type="button"
+              className="btn btn-secondary"
+              href="https://goo.gl/maps/FHwSLq5ae2piyNsJA"
+              target="_blank"
+            >
+              Pokaż na mapie
+            </a>
+            <br />
             <b>Adres probostwa, kancelarii oraz kaplicy pw. Świętej Jadwigi:</b>
             <br />
             ul. Torowa 45
             <br />
             42-600 Tarnowskie Góry <br />
+            <a
+              type="button"
+              className="btn btn-secondary"
+              href="https://goo.gl/maps/xRs4214VeqtSjv8C8"
+              target="_blank"
+            >
+              Pokaż na mapie
+            </a>
+            <br />
             <b>Godziny pracy kancelari:</b>
             <br />
             Poniedziałek 12:00 - 15:00

@@ -21,7 +21,7 @@ class Homepage extends Component {
     };
     try {
       const { data: content } = await axios.get(
-        "https://swanna.net.pl/backend/index.php"
+        "https://api.swanna.net.pl/index.php"
       );
       content.unshift(daneParafii);
       this.setState({ content });
