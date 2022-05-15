@@ -88,7 +88,7 @@ class Kontakt extends Component {
                 3256 7647
               </div>
               <div className="col">
-                <b>Godziny pracy kancelari:</b>
+                <b>Godziny pracy kancelarii:</b>
                 <br />
                 Poniedziałek 12:00 - 15:00
                 <br />
@@ -234,7 +234,7 @@ class Kontakt extends Component {
               Pokaż na mapie
             </a>
             <br />
-            <b>Godziny pracy kancelari:</b>
+            <b>Godziny pracy kancelarii:</b>
             <br />
             Poniedziałek 12:00 - 15:00
             <br />
