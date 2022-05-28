@@ -133,7 +133,8 @@ class Historia extends Component {
             Źródło:{" "}
             <a
               style={{ textDecoration: "none" }}
-              href="http://www.montes.pl/Montes_8/montes_nr_08_16.htm"
+              href="http://www.montes.pl/"
+              target="_blank"
             >
               www.montes.pl
             </a>
@@ -325,7 +326,8 @@ class Historia extends Component {
                             Źródło:{" "}
                             <a
                               style={{ textDecoration: "none" }}
-                              href="http://www.montes.pl/Montes_8/montes_nr_08_16.htm"
+                              href="http://www.montes.pl/"
+                              target="_blank"
                             >
                               www.montes.pl
                             </a>
