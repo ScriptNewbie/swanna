@@ -71,9 +71,9 @@ class Kontakt extends Component {
             </div>
             <div className="row">
               <div className="col">
-                ul. Gliwicka 30 42-600
+                ul. Gliwicka
                 <br />
-                Tarnowskie Góry
+                42-600 Tarnowskie Góry
                 <br />
                 kontakt@swanna.net.pl
               </div>
@@ -207,7 +207,7 @@ class Kontakt extends Component {
           <div id="mobile">
             <b>Adres kościoła pw. Świętej Anny:</b>
             <br />
-            ul. Gliwicka 30
+            ul. Gliwicka
             <br />
             42-600 Tarnowskie Góry
             <br />
