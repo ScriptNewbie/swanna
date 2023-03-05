@@ -100,10 +100,12 @@ class App extends Component {
             <iframe
               id="pdf"
               src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
+              name="pdf"
             ></iframe>
             <iframe
               id="pdf1"
               src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
+              name="pdf1"
             ></iframe>
           </span>
           <div
@@ -143,9 +145,11 @@ class App extends Component {
           </div>
           <div
             onClick={() => {
-              window.open(
-                "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf"
-              );
+              const pageToOpen = this.state.current_ogloszenie
+                ? "https://api.swanna.net.pl/ogloszenia/next.pdf"
+                : "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf";
+              console.log(pageToOpen);
+              window.open(pageToOpen);
             }}
             className="iCannotSee"
           >
