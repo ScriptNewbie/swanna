@@ -135,6 +135,7 @@ class Historia extends Component {
               style={{ textDecoration: "none" }}
               href="http://www.montes.pl/"
               target="_blank"
+              rel="noreferrer"
             >
               www.montes.pl
             </a>
@@ -328,6 +329,7 @@ class Historia extends Component {
                               style={{ textDecoration: "none" }}
                               href="http://www.montes.pl/"
                               target="_blank"
+                              rel="noreferrer"
                             >
                               www.montes.pl
                             </a>

@@ -582,13 +582,16 @@ td {
 }
 
 .mszeHide {
-  animation: hideMsze 1s 1;
+  animation: hideMsze 1600ms 1;
 }
 .mszeHidden {
   left: 400px !important;
 }
 
 @keyframes hideMsze {
+  50% {
+    left: 400px;
+  }
   100% {
     left: 400px;
   }
@@ -635,11 +638,15 @@ td {
 }
 
 .mszeHideFromHist {
-  animation: hideMszeFromHist 1s 1;
+  animation: hideMszeFromHist 1600ms 1;
 }
 @keyframes hideMszeFromHist {
   0% {
     transform: translateX(-465px);
+  }
+  50% {
+    left: 400px;
+    transform: translateX(-600px);
   }
   100% {
     left: 400px;

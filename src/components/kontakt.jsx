@@ -216,6 +216,7 @@ class Kontakt extends Component {
               className="btn btn-secondary"
               href="https://goo.gl/maps/FHwSLq5ae2piyNsJA"
               target="_blank"
+              rel="noreferrer"
             >
               Pokaż na mapie
             </a>
@@ -230,6 +231,7 @@ class Kontakt extends Component {
               className="btn btn-secondary"
               href="https://goo.gl/maps/xRs4214VeqtSjv8C8"
               target="_blank"
+              rel="noreferrer"
             >
               Pokaż na mapie
             </a>

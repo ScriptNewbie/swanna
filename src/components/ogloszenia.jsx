@@ -50,12 +50,12 @@ class Ogloszenia extends Component {
       $("#msze").addClass("mszeHideFromHist");
       setTimeout(() => {
         $("#msze").addClass("mszeHidden");
-      }, 1000);
+      }, 900);
     } else {
       $("#msze").addClass("mszeHide");
       setTimeout(() => {
         $("#msze").addClass("mszeHidden");
-      }, 1000);
+      }, 900);
     }
     $("#ogloszenia").removeClass("z1");
     $("#ogloszenia").removeClass("none");

@@ -98,11 +98,13 @@ class App extends Component {
         <div id="ogloszenia" className="none z1">
           <span id="pdfs">
             <iframe
+              title="Ogłoszenia"
               id="pdf"
               src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
               name="pdf"
             ></iframe>
             <iframe
+              title="Ogłoszenia na przyszły tydzień"
               id="pdf1"
               src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
               name="pdf1"
