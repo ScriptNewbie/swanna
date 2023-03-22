@@ -123,6 +123,11 @@ body {
   animation: fadein 2000ms 1;
 }
 
+.quickfadein {
+  opacity: 1;
+  animation: fadein 200ms 1;
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -396,11 +401,13 @@ td {
 /* Ogloszenia  - część nadal moe być w sekcji ogólnej*/
 
 #modalDemandNew {
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
+  text-align: justify;
+  min-width: 90% !important;
 }
 
 .next {

@@ -71,12 +71,13 @@
         "
       >
         <div style="margin-right: 45px">
-          Strona nie działa poprawnie?
+          Jeżeli strona nie działa poprawnie,
           <a
             style="color: gold; text-decoration: none"
             href="http://old.swanna.net.pl"
             target="_self"
-            >Przejdź na stronę dla starszych urządzeń!</a
+          >
+            przejdź na stronę dla starszych urządzeń klikając tutaj!</a
           >
         </div>
         <span
@@ -97,6 +98,10 @@
         <script>
           if (Cookies.get("oldbrowser") === "closed") {
             document.getElementById("oldBrowserPrompt").style.display = "none";
+            Cookies.set("oldbrowser", "closed", {
+              expires: 399,
+              path: "/",
+            });
           }
           function closeOldBrowserPrompt() {
             document
@@ -108,7 +113,7 @@
             }, 500);
             if (Cookies.get("allowcookies") === "true") {
               Cookies.set("oldbrowser", "closed", {
-                expires: Infinity,
+                expires: 399,
                 path: "/",
               });
             }

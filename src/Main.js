@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import $ from "jquery";
 import axios from "axios";
 import LeftPanel from "./components/leftpanel";
+import Cookies from "js-cookie";
 
 import OneSignal from "react-onesignal";
 
@@ -29,6 +30,13 @@ class App extends Component {
   };
 
   componentDidMount = () => {
+    if (this.props.wasCookies === "yes") {
+      window.scrollTo(0, 0);
+    }
+    Cookies.set("allowcookies", "true", {
+      expires: 399,
+      path: "/",
+    });
     OneSignal.init({
       appId: "6b57325a-836e-43c3-a551-04928b8e7285",
       promptOptions: {

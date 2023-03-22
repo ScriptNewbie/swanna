@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import Cookies from "js-cookie";
 
-function CookiesInfo() {
+function CookiesInfo({ setWasCookies }) {
   const accept = () => {
     Cookies.set("allowcookies", "true", {
-      expires: Infinity,
+      expires: 399,
       path: "/",
     });
-    window.location.reload(false);
+    document.getElementById("cookiesWholePage").classList.add("fadeout");
+    setTimeout(() => {
+      setWasCookies("yes");
+    }, 200);
   };
 
   useEffect(() => {
@@ -15,6 +18,7 @@ function CookiesInfo() {
   });
   return (
     <div
+      id="cookiesWholePage"
       style={{
         position: "absolute",
         width: "100%",
@@ -38,6 +42,16 @@ function CookiesInfo() {
           style={{ fontSize: "3rem", textAlign: "center", marginBottom: 10 }}
         >
           Pliki Cookies
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <a
+            style={{ marginBottom: 15, minWidth: 180 }}
+            href="#decline"
+            type="button"
+            className="btn btn-secondary"
+          >
+            Przewiń na koniec!
+          </a>
         </div>
         <div style={{ textAlign: "justify" }}>
           Zgodnie z obowiązującym prawem, jesteśmy obowiązani do poproszenia Cię
@@ -69,6 +83,7 @@ function CookiesInfo() {
         </div>
         <div style={{ textAlign: "center" }}>
           <a
+            id="decline"
             style={{ margin: 5, minWidth: 180 }}
             href="http://old.swanna.net.pl"
             type="button"
