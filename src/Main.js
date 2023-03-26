@@ -72,7 +72,7 @@ class App extends Component {
               $("#fade").removeClass("fadein");
               if (href === "/nabozenstwa") {
                 $("#maincontent").css({
-                  animation: "fadeout 400ms 1",
+                  animation: "fadeout 800ms 1",
                   opacity: 0,
                 });
               } else $("#fade").addClass("fadeout");
@@ -249,7 +249,7 @@ class App extends Component {
                     });
                   }, 500);
                   $("#modalDemandNew").css({
-                    animation: "fadeout 500ms 1",
+                    animation: "fadeout 1000ms 1",
                   });
                 }}
               >

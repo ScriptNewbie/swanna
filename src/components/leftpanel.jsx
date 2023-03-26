@@ -11,7 +11,7 @@ class LeftPanel extends Component {
   };
 
   closeKosMap = () => {
-    $("#kosMapContainer").css({ animation: "fadeout 500ms 1" });
+    $("#kosMapContainer").css({ animation: "fadeout 1000ms 1" });
     setTimeout(() => {
       $("#kosMapContainer").css({ display: "none" });
     }, 500);
@@ -25,7 +25,7 @@ class LeftPanel extends Component {
   };
 
   closeKapMap = () => {
-    $("#kapMapContainer").css({ animation: "fadeout 500ms 1" });
+    $("#kapMapContainer").css({ animation: "fadeout 1000ms 1" });
     setTimeout(() => {
       $("#kapMapContainer").css({ display: "none" });
     }, 500);

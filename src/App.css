@@ -106,12 +106,15 @@ body {
 
 .fadeout {
   opacity: 0;
-  animation: fadeout 200ms 1;
+  animation: fadeout 400ms 1;
 }
 
 @keyframes fadeout {
   0% {
     opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
   100% {
     opacity: 0;

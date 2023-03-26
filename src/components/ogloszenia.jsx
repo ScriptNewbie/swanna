@@ -94,7 +94,7 @@ class Ogloszenia extends Component {
     $("#top").addClass("show");
     $("#top").removeClass("hide");
     $("#ogloszenia").css({
-      animation: "fadeout 1000ms 1",
+      animation: "fadeout 2000ms 1",
       opacity: 0,
     });
     $("#maincontent").css({ display: "", animation: "", opacity: "" });
@@ -118,14 +118,14 @@ class Ogloszenia extends Component {
   render() {
     if (this.props.clicked) {
       if (this.props.current) {
-        $("#pdf").css({ animation: "fadeout 400ms 1", opacity: 0 });
+        $("#pdf").css({ animation: "fadeout 800ms 1", opacity: 0 });
         setTimeout(() => {
           $("#pdf").insertAfter("#pdf1");
           $("#pdf1").css({ animation: "fadein 1s 1", opacity: 1 });
           $("#pdf").css({ animation: "" });
         }, 400);
       } else {
-        $("#pdf1").css({ animation: "fadeout 400ms 1", opacity: 0 });
+        $("#pdf1").css({ animation: "fadeout 800ms 1", opacity: 0 });
         setTimeout(() => {
           $("#pdf1").insertAfter("#pdf");
           $("#pdf").css({ animation: "fadein 1s 1", opacity: 1 });

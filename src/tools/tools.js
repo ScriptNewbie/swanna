@@ -11,7 +11,7 @@ const exports = {
           $("#fade").removeClass("fadein");
           if (location === "/nabozenstwa") {
             $("#maincontent").css({
-              animation: "fadeout 400ms 1",
+              animation: "fadeout 800ms 1",
               opacity: 0,
             });
           } else $("#fade").addClass("fadeout");

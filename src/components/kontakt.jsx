@@ -22,7 +22,7 @@ class Kontakt extends Component {
 
   showKapl = () => {
     if (this.loaded) {
-      $("#map").css({ animation: "fadeout 200ms 1" });
+      $("#map").css({ animation: "fadeout 400ms 1" });
       setTimeout(() => {
         $("#map").css({ animation: "fadein 300ms 1" });
         $("#kscl").css({ "z-index": 4 });
@@ -36,7 +36,7 @@ class Kontakt extends Component {
 
   showKscl = () => {
     if (this.loaded) {
-      $("#map").css({ animation: "fadeout 200ms 1" });
+      $("#map").css({ animation: "fadeout 400ms 1" });
       setTimeout(() => {
         $("#map").css({ animation: "fadein 300ms 1" });
         $("#kscl").css({ "z-index": 5 });
