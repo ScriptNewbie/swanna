@@ -33,7 +33,6 @@ class Menu extends Component {
     return (
       <div>
         <div id="logo">
-          <NotificationBell />
           <Link to="/">
             <div className="logonapis">
               Parafia <br />
@@ -41,6 +40,7 @@ class Menu extends Component {
               <br />w Tarnowskich Górach
             </div>
           </Link>
+          <NotificationBell />
         </div>
         <div id="menu">
           <nav className="navbar navbar-expand-lg navbar-dark menu">

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBell as solidBell,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBell as solidBell } from "@fortawesome/free-solid-svg-icons";
 import { faBell as regularBell } from "@fortawesome/free-regular-svg-icons";
 import OneSignal from "react-onesignal";
 import $ from "jquery";
