@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBell as solidBell,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
-import { faBell as regularBell } from "@fortawesome/free-regular-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import OneSignal from "react-onesignal";
 import $ from "jquery";
 
@@ -35,11 +31,12 @@ function OneSignalModule() {
                 </span>
               ) : (
                 <span>
-                  Wygląda na to, że nie masz włączonych powiadomienia. Jeśli
+                  Wygląda na to, że nie masz włączonych powiadomień. Jeśli
                   chcesz otrzymywać powiadomienia o nowych ogłoszeniach i
                   aktualnościach, kliknij "Subskrybuj"!
                 </span>
               )}{" "}
+              <br />
               <br />
               Uwaga! Funkcja w faze testów - może nie działać poprawnie. Jeśli
               anulowałeś subskrypcję, a nadal otrzymujesz powiadomienia, lub

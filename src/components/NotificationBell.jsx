@@ -7,12 +7,14 @@ import $ from "jquery";
 
 function NotificationBell() {
   const [subscribed, setSubscribed] = useState(false);
+  const [works, setWorks] = useState(false);
 
   useEffect(() => {
     OneSignal.on("subscriptionChange", function (subscribed) {
       setSubscribed(subscribed);
     });
     OneSignal.isPushNotificationsEnabled((subscribed) => {
+      setWorks(true);
       setSubscribed(subscribed);
     });
   }, []);
@@ -30,10 +32,10 @@ function NotificationBell() {
           height: 60,
           fontSize: 30,
           borderRadius: "10px",
-          display: "flex",
           justifyContent: "center",
           alignItems: "center",
           cursor: "pointer",
+          display: works ? "flex" : "none",
         }}
         onClick={() => {
           $("#modalOneSignal").css({
