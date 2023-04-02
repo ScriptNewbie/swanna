@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import $ from "jquery";
 import { Link } from "react-router-dom";
+import NotificationBell from "./NotificationBell";
 
 class Menu extends Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class Menu extends Component {
     return (
       <div>
         <div id="logo">
+          <NotificationBell />
           <Link to="/">
             <div className="logonapis">
               Parafia <br />

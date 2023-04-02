@@ -12,6 +12,7 @@ import LeftPanel from "./components/leftpanel";
 import Cookies from "js-cookie";
 
 import OneSignal from "react-onesignal";
+import OneSignalModule from "./components/onesignal";
 
 const resize_duration = 1000;
 let ready = true;
@@ -271,6 +272,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <OneSignalModule />
       </div>
     );
   }
