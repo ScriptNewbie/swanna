@@ -110,10 +110,11 @@ class App extends Component {
     this.setState({ ogloszenia_clicked: false });
   };
 
-  openFromApi = () => {
-    const pageToOpen = this.state.current_ogloszenie
-      ? "https://api.swanna.net.pl/ogloszenia/next.pdf"
-      : "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf";
+  openFromApi = (withNext) => {
+    const pageToOpen =
+      this.state.current_ogloszenie && withNext
+        ? "https://api.swanna.net.pl/ogloszenia/next.pdf"
+        : "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf";
     console.log(pageToOpen);
     window.open(pageToOpen);
   };
@@ -185,7 +186,12 @@ class App extends Component {
           >
             Zgłoś nieaktualne ogłoszenia
           </div>
-          <div onClick={this.openFromApi} className="iCannotSee">
+          <div
+            onClick={() => {
+              this.openFromApi(true);
+            }}
+            className="iCannotSee"
+          >
             Nie widzę ogłoszeń!
           </div>
         </div>
@@ -246,7 +252,9 @@ class App extends Component {
                     color: "blue",
                     textDecoration: "underline",
                   }}
-                  onClick={this.openFromApi}
+                  onClick={() => {
+                    this.openFromApi(false);
+                  }}
                 >
                   tutaj
                 </span>
