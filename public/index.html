@@ -94,15 +94,7 @@
         >
           x
         </span>
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
         <script>
-          if (Cookies.get("oldbrowser") === "closed") {
-            document.getElementById("oldBrowserPrompt").style.display = "none";
-            Cookies.set("oldbrowser", "closed", {
-              expires: 399,
-              path: "/",
-            });
-          }
           function closeOldBrowserPrompt() {
             document
               .getElementById("oldBrowserPrompt")
@@ -111,12 +103,6 @@
               document.getElementById("oldBrowserPrompt").style.display =
                 "none";
             }, 500);
-            if (Cookies.get("allowcookies") === "true") {
-              Cookies.set("oldbrowser", "closed", {
-                expires: 399,
-                path: "/",
-              });
-            }
           }
         </script>
       </div>

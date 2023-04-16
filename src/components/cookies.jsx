@@ -13,9 +13,6 @@ function CookiesInfo({ setWasCookies }) {
     }, 200);
   };
 
-  useEffect(() => {
-    document.getElementById("oldBrowserPrompt").style.display = "none";
-  });
   return (
     <div
       id="cookiesWholePage"
