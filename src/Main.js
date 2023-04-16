@@ -110,6 +110,14 @@ class App extends Component {
     this.setState({ ogloszenia_clicked: false });
   };
 
+  openFromApi = () => {
+    const pageToOpen = this.state.current_ogloszenie
+      ? "https://api.swanna.net.pl/ogloszenia/next.pdf"
+      : "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf";
+    console.log(pageToOpen);
+    window.open(pageToOpen);
+  };
+
   getStyle = () => {
     const style = {
       "--start_width": this.state.style.start_width.toString() + "px",
@@ -177,16 +185,7 @@ class App extends Component {
           >
             Zgłoś nieaktualne ogłoszenia
           </div>
-          <div
-            onClick={() => {
-              const pageToOpen = this.state.current_ogloszenie
-                ? "https://api.swanna.net.pl/ogloszenia/next.pdf"
-                : "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf";
-              console.log(pageToOpen);
-              window.open(pageToOpen);
-            }}
-            className="iCannotSee"
-          >
+          <div onClick={this.openFromApi} className="iCannotSee">
             Nie widzę ogłoszeń!
           </div>
         </div>
@@ -237,9 +236,22 @@ class App extends Component {
                     {this.state.demandNewText}
                   </div>
                 )}
-                Uwaga! Jeżeli w ogóle nie widzisz ogłoszeń na stronie,
-                skorzystaj z opcji "Nie widzę ogłoszeń"! Ta opcja służy tylko i
-                wyłącznie do zgłaszania nieaktualnych ogłoszeń!
+                Uwaga! <br /> <br />
+                Przed wysłaniem zgłoszenia odśwież stronę - być może już są
+                dodane nowe ogłoszenia! <br /> <br />
+                Jeżeli w ogóle nie widzisz ogłoszeń na stronie kliknij{" "}
+                <span
+                  style={{
+                    cursor: "pointer",
+                    color: "blue",
+                    textDecoration: "underline",
+                  }}
+                  onClick={this.openFromApi}
+                >
+                  tutaj
+                </span>
+                ! Ta opcja służy tylko i wyłącznie do zgłaszania nieaktualnych
+                ogłoszeń!
               </p>
               <button
                 className="btn btn-secondary m-2"
