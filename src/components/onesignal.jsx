@@ -39,7 +39,7 @@ function OneSignalModule() {
               <br />
               <br />
               Uwaga! Funkcja w faze testów - może nie działać poprawnie. Jeśli
-              anulowałeś subskrypcję, a nadal otrzymujesz powiadomienia, lub
+              anulowałeś subskrybcję, a nadal otrzymujesz powiadomienia, lub
               jeśli zasubskrybowałeś, a nie otrzymujesz powiadomień, napisz na
               adres e-mail: admin@swanna.net.pl
             </p>
