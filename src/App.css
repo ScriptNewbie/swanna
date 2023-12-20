@@ -562,7 +562,7 @@ td {
   padding-bottom: 10px;
   text-align: center;
   line-height: 1rem;
-  transition: left 800ms;
+  transition: left 800ms, transform 1000ms;
 }
 
 #msze span {
@@ -595,29 +595,6 @@ td {
 
 .mszeHist {
   transform: translateX(-465px) !important;
-}
-
-.mszeHistAnim {
-  animation: mszeHistAnim 1s 1;
-}
-
-@keyframes mszeHistAnim {
-  100% {
-    transform: translateX(-465px);
-  }
-}
-
-.mszeBackHist {
-  animation: mszeBackHist 1s 1;
-}
-
-@keyframes mszeBackHist {
-  0% {
-    transform: translateX(-465px);
-  }
-  100% {
-    transform: translateX(-600px);
-  }
 }
 
 #kosMapContainer {

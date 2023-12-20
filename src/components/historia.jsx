@@ -4,26 +4,12 @@ import $ from "jquery";
 class Historia extends Component {
   state = {};
   componentDidMount() {
-    $("#msze").addClass("mszeHistFlag");
-    $("#msze").removeClass("mszeBackHist");
-    if ($(".mszeNabFlag").length > 0) {
-      $("#msze").removeClass("mszeNabFlag");
-      setTimeout(() => {
-        $("#msze").addClass("mszeHist");
-      }, 1000);
-    } else {
-      $("#msze").addClass("mszeHistAnim");
-      setTimeout(() => {
-        $("#msze").addClass("mszeHist");
-      }, 1000);
-    }
+    $("#msze").addClass("mszeHist");
     let height = $("#historiaContent")[0].offsetHeight + 30;
     this.props.setStyle(500, height);
   }
 
   componentWillUnmount() {
-    $("#msze").addClass("mszeBackHist");
-    $("#msze").removeClass("mszeHistAnim");
     $("#msze").removeClass("mszeHist");
   }
 

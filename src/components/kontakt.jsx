@@ -4,8 +4,6 @@ import $ from "jquery";
 class Kontakt extends Component {
   loaded = false;
   componentDidMount() {
-    $("#msze").removeClass("mszeHistFlag");
-    $("#msze").removeClass("mszeNabFlag");
     $("#tg").css({ "z-index": 3 });
     $("#kscl").css({ "z-index": 2 });
     $("#kapl").css({ "z-index": 1 });

@@ -42,17 +42,9 @@ const resze = () => {
 
 class Ogloszenia extends Component {
   async componentDidMount() {
-    $("#msze").addClass("mszeNabFlag");
     $("#msze").removeClass("mszeBackNab");
     $("#msze").removeClass("mszeBackHist");
-    if ($(".mszeHistFlag").length > 0) {
-      $("#msze").removeClass("mszeHistFlag");
-      setTimeout(() => {
-        $("#msze").addClass("mszeHidden");
-      }, 900);
-    } else {
-      $("#msze").addClass("mszeHidden");
-    }
+    $("#msze").addClass("mszeHidden");
     $("#ogloszenia").removeClass("z1");
     $("#ogloszenia").removeClass("none");
     if (window.matchMedia("(min-width: 992px)").matches) {

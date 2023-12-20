@@ -10,8 +10,6 @@ let isAttached = false;
 class Homepage extends Component {
   state = { content: [] };
   componentDidMount = async () => {
-    $("#msze").removeClass("mszeHistFlag");
-    $("#msze").removeClass("mszeNabFlag");
     $("#maincontent").css({ height: "var(--end_height)" });
     blockHome = false;
     const daneParafii = {
