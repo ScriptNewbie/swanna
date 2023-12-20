@@ -31,6 +31,8 @@ body {
   overflow: hidden;
   padding: 15px;
   width: var(--end_width);
+  height: var(--end_height);
+  transition: width var(--resize_duration), height var(--resize_duration);
 }
 
 #maincontent > #fade > div {
@@ -87,21 +89,6 @@ body {
 
 #infoContent {
   height: calc(var(--end_height) - 30px);
-}
-
-.resize {
-  animation: resize var(--resize_duration) 1;
-}
-
-@keyframes resize {
-  0% {
-    width: var(--start_width);
-    height: var(--start_height);
-  }
-  100% {
-    height: var(--end_height);
-    width: var(--end_width);
-  }
 }
 
 .fadeout {

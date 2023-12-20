@@ -96,11 +96,9 @@ class App extends Component {
     };
     this.setState({ style }, () => {
       ready = false;
-      $("#maincontent").addClass("resize");
       $("#fade").addClass("fadein");
       $("#fade").removeClass("fadeout");
       setTimeout(() => {
-        $("#maincontent").removeClass("resize");
         ready = true;
       }, resize_duration);
     });
