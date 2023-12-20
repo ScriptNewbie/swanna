@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import $ from "jquery";
 import axios from "axios";
-import ReactHtmlParser from "react-html-parser";
-import tools from "../tools/tools";
+import tools from "../../tools/tools";
+import News from "./news";
+import Delimiter from "./delimiter";
 
 let blockHome = false;
 let isAttached = false;
@@ -66,16 +67,11 @@ class Homepage extends Component {
         <div id="fix">
           {this.state.content.map((post, index) => (
             <div key={post.id}>
-              <h2 className="title_home">{ReactHtmlParser(post.nazwa)}</h2>
-              <div className="date_home">
-                Opublikowano: {ReactHtmlParser(post.data)}
-              </div>
-              <div className="post_home">{ReactHtmlParser(post.tresc)}</div>
-              {index < this.state.content.length - 1 ? (
-                <div className="linia"></div>
-              ) : (
-                <br />
-              )}
+              <News post={post} />
+              <Delimiter
+                index={index}
+                lastIndex={this.state.content.length - 1}
+              />
             </div>
           ))}
         </div>
