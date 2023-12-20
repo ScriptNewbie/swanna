@@ -8,7 +8,6 @@ class Historia extends Component {
     $("#msze").removeClass("mszeBackHist");
     if ($(".mszeNabFlag").length > 0) {
       $("#msze").removeClass("mszeNabFlag");
-      $("#msze").addClass("mszeHistAnimFromNab");
       setTimeout(() => {
         $("#msze").addClass("mszeHist");
       }, 1000);
@@ -25,7 +24,6 @@ class Historia extends Component {
   componentWillUnmount() {
     $("#msze").addClass("mszeBackHist");
     $("#msze").removeClass("mszeHistAnim");
-    $("#msze").removeClass("mszeHistAnimFromNab");
     $("#msze").removeClass("mszeHist");
   }
 

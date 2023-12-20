@@ -562,6 +562,7 @@ td {
   padding-bottom: 10px;
   text-align: center;
   line-height: 1rem;
+  transition: left 800ms;
 }
 
 #msze span {
@@ -588,33 +589,8 @@ td {
   }
 }
 
-.mszeHide {
-  animation: hideMsze 1600ms 1;
-}
 .mszeHidden {
   left: 400px !important;
-}
-
-@keyframes hideMsze {
-  50% {
-    left: 400px;
-  }
-  100% {
-    left: 400px;
-  }
-}
-
-.mszeBackNab {
-  animation: mszeBackNab 1000ms 1;
-}
-
-@keyframes mszeBackNab {
-  0% {
-    left: 400px;
-  }
-  100% {
-    left: 50%;
-  }
 }
 
 .mszeHist {
@@ -641,37 +617,6 @@ td {
   }
   100% {
     transform: translateX(-600px);
-  }
-}
-
-.mszeHideFromHist {
-  animation: hideMszeFromHist 1600ms 1;
-}
-@keyframes hideMszeFromHist {
-  0% {
-    transform: translateX(-465px);
-  }
-  50% {
-    left: 400px;
-    transform: translateX(-600px);
-  }
-  100% {
-    left: 400px;
-    transform: translateX(-600px);
-  }
-}
-
-.mszeHistAnimFromNab {
-  animation: mszeHistAnimFromNab 1s 1;
-}
-
-@keyframes mszeHistAnimFromNab {
-  0% {
-    left: 400px;
-  }
-  100% {
-    left: 50%;
-    transform: translateX(-465px);
   }
 }
 

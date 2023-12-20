@@ -47,15 +47,11 @@ class Ogloszenia extends Component {
     $("#msze").removeClass("mszeBackHist");
     if ($(".mszeHistFlag").length > 0) {
       $("#msze").removeClass("mszeHistFlag");
-      $("#msze").addClass("mszeHideFromHist");
       setTimeout(() => {
         $("#msze").addClass("mszeHidden");
       }, 900);
     } else {
-      $("#msze").addClass("mszeHide");
-      setTimeout(() => {
-        $("#msze").addClass("mszeHidden");
-      }, 900);
+      $("#msze").addClass("mszeHidden");
     }
     $("#ogloszenia").removeClass("z1");
     $("#ogloszenia").removeClass("none");
@@ -87,10 +83,7 @@ class Ogloszenia extends Component {
 
   componentWillUnmount() {
     $("#msze").addClass("mszeBackNab");
-    $("#msze").removeClass("mszeHide");
-    $("#msze").removeClass("mszeHideFromHist");
     $("#msze").removeClass("mszeHidden");
-
     $("#top").addClass("show");
     $("#top").removeClass("hide");
     $("#ogloszenia").css({
