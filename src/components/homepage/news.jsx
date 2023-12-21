@@ -1,14 +1,14 @@
 import React from "react";
 import ReactHtmlParser from "react-html-parser";
 
-function News({ post }) {
+function News({ title, date, content }) {
   return (
     <div>
-      <h2 className="title_home">{ReactHtmlParser(post.nazwa)}</h2>
-      <div className="date_home">
-        Opublikowano: {ReactHtmlParser(post.data)}
+      <h2 className="title_home">{ReactHtmlParser(title)}</h2>
+      <div className="date_home">Opublikowano: {ReactHtmlParser(date)}</div>
+      <div className="post_home">
+        {typeof content === "string" ? ReactHtmlParser(content) : content}
       </div>
-      <div className="post_home">{ReactHtmlParser(post.tresc)}</div>
     </div>
   );
 }
