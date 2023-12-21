@@ -4,10 +4,6 @@ body {
   overflow-y: scroll;
 }
 
-.z1 {
-  z-index: -1;
-}
-
 .ldr {
   position: absolute;
   transform: translateY(30px);
@@ -33,16 +29,6 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: calc(var(--end_width) - 30px);
-}
-
-#ogloszenia {
-  position: fixed;
-  top: 40px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(209, 209, 209);
-  opacity: 0;
 }
 
 .hide {
@@ -177,7 +163,6 @@ body {
 
   .hide {
     transform: translateY(0) !important;
-    animation: none !important;
   }
 
   .navbar-expand-lg .navbar-nav .nav-link {

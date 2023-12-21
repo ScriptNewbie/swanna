@@ -24,11 +24,6 @@ function Main({ wasCookies, location, history }) {
     start_height: 800,
     end_height: 800,
   });
-  const [state, setState] = useState({
-    current_ogloszenie: 0,
-    ogloszenia_clicked: false,
-    demandNewText: "",
-  });
 
   useEffect(() => {
     ready = false;
@@ -90,84 +85,8 @@ function Main({ wasCookies, location, history }) {
     setStyleObject(_style);
   };
 
-  const setOgloszeniaUnclicked = () => {
-    setState({ ogloszenia_clicked: false });
-  };
-
-  const openFromApi = (withNext) => {
-    const pageToOpen =
-      state.current_ogloszenie && withNext
-        ? "https://api.swanna.net.pl/ogloszenia/next.pdf"
-        : "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf";
-    console.log(pageToOpen);
-    window.open(pageToOpen);
-  };
-
-  let statusStyle = "alert alert-";
-  if (state.demandNewText === "Dziękujemy za wysłanie zgłoszenia!")
-    statusStyle += "success";
-  else statusStyle += "secondary";
   return (
     <div>
-      <div id="ogloszenia" className="none z1">
-        <span id="pdfs">
-          <iframe
-            title="Ogłoszenia"
-            id="pdf"
-            src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf&amp;embedded=true"
-            name="pdf"
-          ></iframe>
-          <iframe
-            title="Ogłoszenia na przyszły tydzień"
-            id="pdf1"
-            src="https://docs.google.com/gview?url=https://api.swanna.net.pl/ogloszenia/next.pdf&amp;embedded=true"
-            name="pdf1"
-          ></iframe>
-        </span>
-        <div
-          className="next"
-          onClick={() => {
-            setState({
-              current_ogloszenie: !state.current_ogloszenie,
-              ogloszenia_clicked: true,
-            });
-            if (state.current_ogloszenie) {
-              $("#after").fadeOut(400, () => {
-                $("#after").addClass("afternext");
-                $("#after").removeClass("afterback");
-                $("#after").fadeIn(200);
-              });
-            } else {
-              $("#after").fadeOut(400, () => {
-                $("#after").addClass("afterback");
-                $("#after").removeClass("afternext");
-                $("#after").fadeIn(200);
-              });
-            }
-          }}
-        >
-          <span id="after" className="afternext"></span>
-        </div>
-        <div
-          className="demandNew"
-          onClick={() => {
-            $("#modalDemandNew").css({
-              display: "block",
-              animation: "fadein 500ms 1",
-            });
-          }}
-        >
-          Zgłoś nieaktualne ogłoszenia
-        </div>
-        <div
-          onClick={() => {
-            openFromApi(true);
-          }}
-          className="iCannotSee"
-        >
-          Nie widzę ogłoszeń!
-        </div>
-      </div>
       <div id="top">
         <Menu />
       </div>
@@ -183,81 +102,12 @@ function Main({ wasCookies, location, history }) {
               path="/historia"
               render={() => <Historia setStyle={setStyle} />}
             />
-            <Route
-              path="/nabozenstwa"
-              render={() => (
-                <Ogloszenia
-                  current={state.current_ogloszenie}
-                  clicked={state.ogloszenia_clicked}
-                  setUnclicked={setOgloszeniaUnclicked}
-                />
-              )}
-            />
+            <Route path="/nabozenstwa" render={() => <Ogloszenia />} />
             <Route
               path=""
               render={() => <Homepage setStyle={setStyle} history={history} />}
             />
           </Switch>
-        </div>
-      </div>
-      <div id="modalDemandNew">
-        <div className="card">
-          <div className="card-header">Zgłoś nieaktualne ogłoszenia</div>
-          <div className="card-body">
-            <p className="card-text">
-              {state.demandNewText && (
-                <div className={statusStyle} role="alert">
-                  {state.demandNewText}
-                </div>
-              )}
-              Uwaga! <br /> <br />
-              Przed wysłaniem zgłoszenia odśwież stronę - być może już są dodane
-              nowe ogłoszenia! <br /> <br />
-              Jeżeli w ogóle nie widzisz ogłoszeń na stronie kliknij{" "}
-              <span
-                style={{
-                  cursor: "pointer",
-                  color: "blue",
-                  textDecoration: "underline",
-                }}
-                onClick={() => {
-                  openFromApi(false);
-                }}
-              >
-                tutaj
-              </span>
-              ! Ta opcja służy tylko i wyłącznie do zgłaszania nieaktualnych
-              ogłoszeń!
-            </p>
-            <button
-              className="btn btn-secondary m-2"
-              onClick={() => {
-                setTimeout(() => {
-                  $("#modalDemandNew").css({
-                    display: "none",
-                  });
-                }, 500);
-                $("#modalDemandNew").css({
-                  animation: "fadeout 1000ms 1",
-                });
-              }}
-            >
-              Zamknij okno
-            </button>
-            {!state.demandNewText && (
-              <button
-                onClick={async () => {
-                  const { data: demandNewText } = await axios.get(
-                    "https://api.swanna.net.pl/backend/mail.php"
-                  );
-                  setState({ demandNewText });
-                }}
-                className="btn btn-success m-2"
-              >
-                Wyślij zgłoszenie!
-              </button>
-            )}
-          </div>
         </div>
       </div>
       <OneSignalModule />
