@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import $ from "jquery";
-let apld = false;
 
+let apld = false;
 const resze = () => {
   if (window.matchMedia("(max-width: 991px)").matches) {
     if (apld) {
@@ -36,8 +36,8 @@ const resze = () => {
   }
 };
 
-class Ogloszenia extends Component {
-  async componentDidMount() {
+function Ogloszenia({ clicked, current, setUnclicked }) {
+  useEffect(() => {
     $("#msze").removeClass("mszeBackNab");
     $("#msze").removeClass("mszeBackHist");
     $("#msze").addClass("mszeHidden");
@@ -66,58 +66,56 @@ class Ogloszenia extends Component {
       $("#ogloszenia").css({ height: ph * 3.5, opacity: 1 });
     }
     $(window).resize(resze);
-  }
 
-  componentWillUnmount() {
-    $("#msze").addClass("mszeBackNab");
-    $("#msze").removeClass("mszeHidden");
-    $("#top").removeClass("hide");
-    $("#ogloszenia").css({
-      animation: "fadeout 2000ms 1",
-      opacity: 0,
-    });
-    $("#maincontent").css({ display: "", animation: "", opacity: "" });
-    setTimeout(() => {
-      $("#ogloszenia").addClass("z1");
-      $("#maincontent").css({
-        "z-index": "",
+    return () => {
+      $("#msze").addClass("mszeBackNab");
+      $("#msze").removeClass("mszeHidden");
+      $("#top").removeClass("hide");
+      $("#ogloszenia").css({
+        animation: "fadeout 2000ms 1",
+        opacity: 0,
       });
-      $("#ogloszenia").css({ animation: "" });
-    }, 1000);
-    $(window).off("resize", resze);
-    $("#ogloszenia").addClass("none");
-    this.props.setUnclicked();
-    apld = false;
-    if (window.matchMedia("(max-width: 992px)").matches) {
-      $("#ogloszenia").insertBefore("#top");
-    }
-  }
-
-  render() {
-    if (this.props.clicked) {
-      if (this.props.current) {
-        $("#pdf").css({ animation: "fadeout 800ms 1", opacity: 0 });
-        setTimeout(() => {
-          $("#pdf").insertAfter("#pdf1");
-          $("#pdf1").css({ animation: "fadein 1s 1", opacity: 1 });
-          $("#pdf").css({ animation: "" });
-        }, 400);
-      } else {
-        $("#pdf1").css({ animation: "fadeout 800ms 1", opacity: 0 });
-        setTimeout(() => {
-          $("#pdf1").insertAfter("#pdf");
-          $("#pdf").css({ animation: "fadein 1s 1", opacity: 1 });
-          $("#pdf1").css({ animation: "" });
-        }, 400);
+      $("#maincontent").css({ display: "", animation: "", opacity: "" });
+      setTimeout(() => {
+        $("#ogloszenia").addClass("z1");
+        $("#maincontent").css({
+          "z-index": "",
+        });
+        $("#ogloszenia").css({ animation: "" });
+      }, 1000);
+      $(window).off("resize", resze);
+      $("#ogloszenia").addClass("none");
+      setUnclicked();
+      apld = false;
+      if (window.matchMedia("(max-width: 992px)").matches) {
+        $("#ogloszenia").insertBefore("#top");
       }
-    }
+    };
+  }, []);
 
-    return (
-      <div>
-        <div id="infoContent"></div>
-      </div>
-    );
+  if (clicked) {
+    if (current) {
+      $("#pdf").css({ animation: "fadeout 800ms 1", opacity: 0 });
+      setTimeout(() => {
+        $("#pdf").insertAfter("#pdf1");
+        $("#pdf1").css({ animation: "fadein 1s 1", opacity: 1 });
+        $("#pdf").css({ animation: "" });
+      }, 400);
+    } else {
+      $("#pdf1").css({ animation: "fadeout 800ms 1", opacity: 0 });
+      setTimeout(() => {
+        $("#pdf1").insertAfter("#pdf");
+        $("#pdf").css({ animation: "fadein 1s 1", opacity: 1 });
+        $("#pdf1").css({ animation: "" });
+      }, 400);
+    }
   }
+
+  return (
+    <div>
+      <div id="infoContent"></div>
+    </div>
+  );
 }
 
 export default Ogloszenia;
