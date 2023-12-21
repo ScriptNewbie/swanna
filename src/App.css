@@ -494,20 +494,6 @@ td {
   margin: 0em;
 }
 
-/*kontakt*/
-#mobile {
-  display: none;
-}
-
-@media (max-width: 991px) {
-  #mobile {
-    display: block;
-  }
-  #desktop {
-    display: none;
-  }
-}
-
 /* lewy panel */
 #msze {
   position: absolute;
