@@ -5,7 +5,6 @@ let apld = false;
 const resze = () => {
   if (window.matchMedia("(max-width: 991px)").matches) {
     if (apld) {
-      $("#maincontent").css({ display: "block" });
       $("#ogloszenia").insertBefore("#infoContent");
       $(".next").insertBefore("#pdfs");
       $(".demandNew").insertBefore("#pdfs");
@@ -19,7 +18,6 @@ const resze = () => {
     $("#ogloszenia").css({ height: ph * 3.5 });
   } else {
     if (!apld) {
-      $("#maincontent").css({ display: "none" });
       $("#fade").addClass("fadein");
       $("#fade").removeClass("fadeout");
       $("#ogloszenia").insertBefore("#top");
@@ -44,7 +42,6 @@ function Ogloszenia({ clicked, current, setUnclicked }) {
     $("#ogloszenia").removeClass("z1");
     $("#ogloszenia").removeClass("none");
     if (window.matchMedia("(min-width: 992px)").matches) {
-      $("#maincontent").css({ display: "none" });
       $("#fade").addClass("fadein");
       $("#fade").removeClass("fadeout");
       $("#ogloszenia").css({ opacity: 1, animation: "fadein 1s 1" });
@@ -75,7 +72,7 @@ function Ogloszenia({ clicked, current, setUnclicked }) {
         animation: "fadeout 2000ms 1",
         opacity: 0,
       });
-      $("#maincontent").css({ display: "", animation: "", opacity: "" });
+      $("#maincontent").css({ animation: "", opacity: "" });
       setTimeout(() => {
         $("#ogloszenia").addClass("z1");
         $("#maincontent").css({
