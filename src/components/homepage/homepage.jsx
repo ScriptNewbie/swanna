@@ -4,6 +4,7 @@ import axios from "axios";
 import tools from "../../tools/tools";
 import News from "./news";
 import Delimiter from "./delimiter";
+import Link from "../Link";
 
 let blockHome = false;
 function Homepage({ setStyle, history }) {
@@ -12,12 +13,23 @@ function Homepage({ setStyle, history }) {
   useEffect(() => {
     $("#maincontent").css({ height: "var(--end_height)" });
     blockHome = false;
+    const daneParafii = {
+      id: -1,
+      nazwa: "Dane Parafii",
+      data: "Przypięty",
+      tresc: (
+        <p>
+          Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz
+          na podstronie <Link to="/kontakt">kontakt!</Link>
+        </p>
+      ),
+    };
     const fetchData = async () => {
       try {
         const { data: content } = await axios.get(
           "https://api.swanna.net.pl/index.php"
         );
-        setContent(content);
+        setContent([daneParafii, ...content]);
       } catch (e) {
         const content = [
           {
@@ -27,7 +39,7 @@ function Homepage({ setStyle, history }) {
               "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
           },
         ];
-        setContent(content);
+        setContent([daneParafii, ...content]);
       }
     };
 
@@ -52,26 +64,6 @@ function Homepage({ setStyle, history }) {
     <div id="newsContent" className="hghKeep">
       {content.map((post, index) => (
         <div key={post.id + index}>
-          <News
-            title="Dane parafii"
-            date={"Przypięty"}
-            content={
-              <p>
-                Dane parafii tj. adres, telefon czy numer konta bankowego
-                znajdziesz na podstronie{" "}
-                <a
-                  id="redToCon"
-                  href="/kontakt"
-                  onClick={(e) => {
-                    tools.changeScreen(e, "/kontakt", history);
-                  }}
-                >
-                  kontakt!
-                </a>
-              </p>
-            }
-          />
-          <Delimiter />
           <News title={post.nazwa} date={post.data} content={post.tresc} />
           <Delimiter index={index} lastIndex={content.length - 1} />
         </div>
