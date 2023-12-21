@@ -54,30 +54,6 @@ body {
 
 .hide {
   transform: translateY(-150px);
-  animation: hide 1s 1;
-}
-
-@keyframes hide {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-150px);
-  }
-}
-
-.show {
-  transform: translateY(0);
-  animation: show 1s 1;
-}
-
-@keyframes show {
-  0% {
-    transform: translateY(-150px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 
 #infoContent {
@@ -181,6 +157,10 @@ body {
   cursor: pointer;
 }
 
+#top {
+  transition: transform 1s;
+}
+
 @media (max-width: 991px) {
   #maincontent {
     left: 0 !important;
@@ -203,11 +183,6 @@ body {
   }
 
   .hide {
-    transform: translateY(0) !important;
-    animation: none !important;
-  }
-
-  .show {
     transform: translateY(0) !important;
     animation: none !important;
   }

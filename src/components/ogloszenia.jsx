@@ -5,8 +5,6 @@ let apld = false;
 const resze = () => {
   if (window.matchMedia("(max-width: 991px)").matches) {
     if (apld) {
-      $("#top").addClass("show");
-      $("#top").removeClass("hide");
       $("#maincontent").css({ display: "block" });
       $("#ogloszenia").insertBefore("#infoContent");
       $(".next").insertBefore("#pdfs");
@@ -28,8 +26,6 @@ const resze = () => {
       $(".next").insertAfter("#pdfs");
       $(".demandNew").insertAfter("#pdfs");
       $(".iCannotSee").insertAfter("#pdfs");
-      $("#top").addClass("hide");
-      $("#top").removeClass("show");
 
       $("#maincontent").css({
         "z-index": -1,
@@ -53,7 +49,6 @@ class Ogloszenia extends Component {
       $("#fade").removeClass("fadeout");
       $("#ogloszenia").css({ opacity: 1, animation: "fadein 1s 1" });
       $("#top").addClass("hide");
-      $("#top").removeClass("show");
       $(".next").insertAfter("#pdfs");
       $(".demandNew").insertAfter("#pdfs");
       $(".iCannotSee").insertAfter("#pdfs");
@@ -76,7 +71,6 @@ class Ogloszenia extends Component {
   componentWillUnmount() {
     $("#msze").addClass("mszeBackNab");
     $("#msze").removeClass("mszeHidden");
-    $("#top").addClass("show");
     $("#top").removeClass("hide");
     $("#ogloszenia").css({
       animation: "fadeout 2000ms 1",
@@ -88,7 +82,6 @@ class Ogloszenia extends Component {
       $("#maincontent").css({
         "z-index": "",
       });
-      $("#top").removeClass("show");
       $("#ogloszenia").css({ animation: "" });
     }, 1000);
     $(window).off("resize", resze);
