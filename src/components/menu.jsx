@@ -5,24 +5,6 @@ import NotificationBell from "./NotificationBell";
 
 class Menu extends Component {
   componentDidMount() {
-    let changed = false;
-    if (window.matchMedia("(max-width: 991px)").matches) {
-      $("#logo").insertAfter("#menu");
-      changed = true;
-    }
-    $(window).resize(function () {
-      if (window.matchMedia("(max-width: 991px)").matches) {
-        if (!changed) {
-          $("#logo").insertAfter("#menu");
-          changed = true;
-        }
-      } else {
-        if (changed) {
-          $("#menu").insertAfter("#logo");
-          changed = false;
-        }
-      }
-    });
     $(".nav-link").click(function () {
       if (window.matchMedia("(max-width: 991px)").matches) {
         $(".navbar-toggler").trigger("click");
@@ -31,7 +13,7 @@ class Menu extends Component {
   }
   render() {
     return (
-      <div>
+      <div id="menuContainer">
         <div id="logo">
           <Link to="/">
             <div className="logonapis">

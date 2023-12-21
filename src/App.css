@@ -618,3 +618,14 @@ td {
   display: none;
   z-index: 9999 !important;
 }
+
+@media screen and (max-width: 991px) {
+  #menuContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #logo {
+    order: 1;
+  }
+}
