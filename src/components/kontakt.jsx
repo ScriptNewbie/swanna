@@ -54,66 +54,55 @@ function Kontakt({ setStyle }) {
 
   return (
     <div id="contactContent">
-      <div className="row">
-        <div className="col">
+      <div className="grid-container">
+        <div className="leftHeader">
           <b>Adres kościoła pw. Świętej Anny:</b>
         </div>
-        <div className="col">
-          <b>
-            Adres probostwa, kancelarii oraz kaplicy
-            <div style={{ display: "inline-block" }}>pw. Świętej Jadwigi :</div>
-          </b>
+        <div className="rightHeader">
+          <b>Adres probostwa, kancelarii oraz kaplicy pw. Świętej Jadwigi:</b>
         </div>
-      </div>
-      <div className="row">
-        <div className="col">
+
+        <div className="leftAddress">
           ul. Gliwicka
           <br />
           42-600 Tarnowskie Góry
           <br />
           kontakt@swanna.net.pl
         </div>
-        <div className="col">
+        <div className="rightAddress">
           ul. Torowa 45 <br /> 42-600 Tarnowskie Góry <br /> +48 32 285 85 47
         </div>
-      </div>
-      <div className="row">
-        <div className="col">
+
+        <div className="leftAdditional">
           <b>Numer konta bankowego:</b> <br /> PL 42 1050 1230 1000 0090 3256
           7647
         </div>
-        <div className="col">
+        <div className="rightAdditional">
           <b>Godziny pracy kancelarii:</b>
           <br />
           Poniedziałek 12:00 - 15:00
           <br />
           Piątek 15:00 - 17:00
         </div>
-      </div>
 
-      <div className="row">
-        <div className="col">
+        <div className="leftButton">
           <center>
             <button
               type="button"
-              style={{
-                marginTop: "10px",
-              }}
               className="btn btn-secondary"
+              style={{ marginTop: "10px" }}
               onClick={showKscl}
             >
               Pokaż na mapie
             </button>
           </center>
         </div>
-        <div className="col">
+        <div className="rightButton">
           <center>
             <button
               type="button"
-              style={{
-                marginTop: "10px",
-              }}
               className="btn btn-secondary"
+              style={{ marginTop: "10px" }}
               onClick={showKapl}
             >
               Pokaż na mapie
@@ -121,6 +110,7 @@ function Kontakt({ setStyle }) {
           </center>
         </div>
       </div>
+
       <div className="row">
         <div className="col">
           <div className="ldr">

@@ -466,6 +466,58 @@ td {
   }
 }
 
+/*kontakt */
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "leftHeader rightHeader"
+    "leftAddress rightAddress"
+    "leftAdditional rightAdditional"
+    "leftButton rightButton";
+  grid-template-columns: 1fr 1fr; /* Each column takes up half the available space */
+}
+
+@media (max-width: 991px) {
+  .grid-container {
+    grid-template-areas:
+      "leftHeader"
+      "leftAddress"
+      "leftButton"
+      "rightHeader"
+      "rightAddress"
+      "rightButton"
+      "leftAdditional"
+      "rightAdditional";
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftHeader {
+  grid-area: leftHeader;
+}
+.leftAddress {
+  grid-area: leftAddress;
+}
+.leftAdditional {
+  grid-area: leftAdditional;
+}
+.leftButton {
+  grid-area: leftButton;
+}
+.rightHeader {
+  grid-area: rightHeader;
+}
+.rightAddress {
+  grid-area: rightAddress;
+}
+.rightAdditional {
+  grid-area: rightAdditional;
+}
+.rightButton {
+  grid-area: rightButton;
+}
+
 /* Homepage */
 
 .title_home {
