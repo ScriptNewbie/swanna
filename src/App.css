@@ -8,13 +8,6 @@ body {
   z-index: -1;
 }
 
-#map {
-  position: "relative";
-  height: "600px";
-  margin-top: "15px";
-  margin-bottom: "-15px";
-}
-
 .ldr {
   position: absolute;
   transform: translateY(30px);
@@ -468,6 +461,26 @@ td {
 
 /*kontakt */
 
+#map {
+  position: relative;
+  height: 600px;
+  margin-top: 15px;
+  margin-bottom: -15px;
+  width: 100%;
+}
+
+#mapwrap {
+  position: absolute;
+  border: 0;
+  left: -15px;
+}
+
+.googleMap {
+  position: absolute;
+  width: 740px;
+  height: 600px;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -490,6 +503,26 @@ td {
       "leftAdditional"
       "rightAdditional";
     grid-template-columns: 1fr;
+  }
+
+  .googleMap {
+    width: 100%;
+  }
+  #map {
+    margin-bottom: 0;
+  }
+  #mapwrap {
+    left: 0;
+    width: 100%;
+  }
+  .rightHeader {
+    margin-top: 15px;
+  }
+  .leftAdditional {
+    margin-top: 15px;
+  }
+  .rightAdditional {
+    margin-top: 15px;
   }
 }
 
