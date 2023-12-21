@@ -80,13 +80,6 @@ body {
   }
 }
 
-#fix {
-  width: 710px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 #infoContent {
   height: calc(var(--end_height) - 30px);
 }
@@ -203,12 +196,6 @@ body {
     left: 0 !important;
     transform: translateX(0) !important;
     width: auto !important;
-  }
-
-  #fix {
-    width: auto !important;
-    left: 0 !important;
-    transform: translateX(0) !important;
   }
 
   #infoContent {
