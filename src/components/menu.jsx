@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import $ from "jquery";
 import { Link } from "react-router-dom";
 import NotificationBell from "./NotificationBell";
 
 class Menu extends Component {
   componentDidMount() {
-    $(".nav-link").click(function () {
-      if (window.matchMedia("(max-width: 991px)").matches) {
-        $(".navbar-toggler").trigger("click");
-      }
+    document.querySelectorAll(".nav-link").forEach(function (navLink) {
+      navLink.addEventListener("click", function () {
+        if (window.matchMedia("(max-width: 991px)").matches) {
+          document.querySelector(".navbar-toggler").click();
+        }
+      });
     });
   }
   render() {
