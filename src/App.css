@@ -499,9 +499,9 @@ td {
       "leftButton"
       "rightHeader"
       "rightAddress"
+      "rightAdditional"
       "rightButton"
-      "leftAdditional"
-      "rightAdditional";
+      "leftAdditional";
     grid-template-columns: 1fr;
   }
 
