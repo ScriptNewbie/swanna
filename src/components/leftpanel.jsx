@@ -113,7 +113,7 @@ function LeftPanel() {
           }}
           onClick={closeKosMap}
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
         >
           Zamknij mapę
         </button>
@@ -143,7 +143,7 @@ function LeftPanel() {
           }}
           onClick={closeKapMap}
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
         >
           Zamknij mapę
         </button>

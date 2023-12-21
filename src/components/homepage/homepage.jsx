@@ -51,7 +51,7 @@ function Homepage({ setStyle, history }) {
   return (
     <div id="newsContent" className="hghKeep">
       {content.map((post, index) => (
-        <div key={post.id}>
+        <div key={post.id + index}>
           <News
             title="Dane parafii"
             date={"Przypięty"}
