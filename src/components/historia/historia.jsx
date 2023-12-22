@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
+import React, { useEffect, useRef } from "react";
 import "./historia.css";
 
-function Historia({ setStyle, setCurrentScreen }) {
+function Historia({ setCurrentScreen, adjustHeight }) {
+  const content = useRef(null);
   useEffect(() => {
     setCurrentScreen("historia");
-    let height = $("#historiaContent")[0].offsetHeight + 30;
-    setStyle(500, height);
+    adjustHeight(content.current.scrollHeight);
   }, []);
 
   return (
-    <div id="historiaContent">
+    <div id="historiaContent" ref={content}>
       <div id="mobilecontent">
         {" "}
         <h1>Kościół p.w. św. Anny</h1>

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import $ from "jquery";
+import React, { useEffect, useState, useRef } from "react";
 import Map from "./map";
 import "./kontakt.css";
 
-function Kontakt({ setStyle, setCurrentScreen }) {
+function Kontakt({ setCurrentScreen, adjustHeight }) {
+  const content = useRef(null);
   const [currentMap, setCurrentMap] = useState("tg");
   useEffect(() => {
     setCurrentScreen("kontakt");
-    let height = $("#contactContent")[0].offsetHeight + 30;
-    setStyle(740, height);
+    adjustHeight(content.current.scrollHeight);
   }, []);
   return (
-    <div id="contactContent">
+    <div id="contactContent" ref={content}>
       <div className="grid-container">
         <div className="leftHeader">
           <b>Adres kościoła pw. Świętej Anny:</b>

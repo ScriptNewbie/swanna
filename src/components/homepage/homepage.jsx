@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import $ from "jquery";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./homepage.css";
 import News from "./news";
 import Delimiter from "./delimiter";
 import Link from "../Link";
 
-let blockHome = false;
-function Homepage({ setStyle, setCurrentScreen }) {
+function Homepage({ setCurrentScreen, adjustHeight }) {
+  const contentPlace = useRef(null);
   const [content, setContent] = useState([]);
 
   useEffect(() => {
     setCurrentScreen("homepage");
 
-    $("#maincontent").css({ height: "var(--end_height)" });
-    blockHome = false;
     const daneParafii = {
       id: -1,
       nazwa: "Dane Parafii",
@@ -45,25 +42,13 @@ function Homepage({ setStyle, setCurrentScreen }) {
       }
     };
 
-    fetchData();
-    return () => {
-      $("#maincontent").css({ height: "" });
-    };
+    fetchData().finally(() => {
+      adjustHeight(contentPlace.current.scrollHeight);
+    });
   }, []);
 
-  useEffect(() => {
-    if (!blockHome) {
-      let height = $("#newsContent")[0].offsetHeight + 30;
-      if (height > 30) {
-        setStyle(740, height);
-        $("#maincontent").css({ height: "" });
-        blockHome = true;
-      }
-    }
-  });
-
   return (
-    <div id="newsContent" className="hghKeep">
+    <div id="newsContent" ref={contentPlace}>
       {content.map((post, index) => (
         <div key={post.id + index}>
           <News title={post.nazwa} date={post.data} content={post.tresc} />

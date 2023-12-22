@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CookiesInfo from "./components/cookies";
 import Appk from "./Main";
 import Cookies from "js-cookie";
-import { FadeTransitionProvider } from "./contexts/fadeTransitionContext";
+import { TransitionProvider } from "./contexts/TransitionContext";
 
 function App() {
   useEffect(() => {
@@ -10,7 +10,7 @@ function App() {
   }, []);
   const [wasCookies, setWasCookies] = useState("no");
   return (
-    <FadeTransitionProvider>
+    <TransitionProvider>
       <div key={wasCookies} className="quickfadein">
         {Cookies.get("allowcookies") === "true" ? (
           <Appk wasCookies={wasCookies} />
@@ -18,7 +18,7 @@ function App() {
           <CookiesInfo setWasCookies={setWasCookies} />
         )}
       </div>
-    </FadeTransitionProvider>
+    </TransitionProvider>
   );
 }
 

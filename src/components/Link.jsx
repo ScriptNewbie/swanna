@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import FadeTransitionContext from "../contexts/fadeTransitionContext";
+import TransitionContext from "../contexts/TransitionContext";
 
 function Link({ to, children, className }) {
   const history = useHistory();
-  const { setTransitioning } = useContext(FadeTransitionContext);
+  const { setTransitioning } = useContext(TransitionContext);
   const handleClick = (e) => {
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();
