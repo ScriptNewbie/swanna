@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import Link from "./Link";
-import NotificationBell from "./NotificationBell";
+import Link from "../Link";
+import NotificationBell from "../NotificationBell";
+import "./menu.css";
 
 function Menu() {
   useEffect(() => {

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
+import "./historia.css";
 
 function Historia({ setStyle }) {
   useEffect(() => {

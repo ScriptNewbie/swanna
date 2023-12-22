@@ -1,0 +1,9 @@
+#modalOneSignal {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  text-align: justify;
+  min-width: 90% !important;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import axios from "axios";
-import tools from "../../tools/tools";
+import "./homepage.css";
 import News from "./news";
 import Delimiter from "./delimiter";
 import Link from "../Link";

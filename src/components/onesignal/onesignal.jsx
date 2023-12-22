@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import OneSignal from "react-onesignal";
 import $ from "jquery";
+import "./onesignal.css";
 
 function OneSignalModule() {
   const [subscribed, setSubscribed] = useState(false);

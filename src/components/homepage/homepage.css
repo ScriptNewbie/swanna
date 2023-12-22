@@ -1,0 +1,25 @@
+.title_home {
+  position: relative;
+  text-align: justify;
+  margin-bottom: 0px;
+}
+.post_home {
+  position: relative;
+  text-align: justify;
+  margin-top: 15px;
+  font-size: larger;
+}
+
+.linia {
+  position: relative;
+  width: calc(100% + 30px);
+  left: -15px;
+  height: 1px;
+  background-color: darkgrey;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.post_home > p {
+  margin: 0em;
+}

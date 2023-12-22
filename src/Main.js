@@ -7,7 +7,6 @@ import Historia from "./components/historia";
 import Kontakt from "./components/kontakt";
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
-import axios from "axios";
 import LeftPanel from "./components/leftpanel";
 import Cookies from "js-cookie";
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import Map from "./map";
+import "./kontakt.css";
 
 function Kontakt({ setStyle }) {
   const [currentMap, setCurrentMap] = useState("tg");
@@ -82,7 +83,7 @@ function Kontakt({ setStyle }) {
           </div>
           <div id="map">
             <div id="mapwrap">
-              <Map id={currentMap} />
+              <Map map={currentMap} />
             </div>
           </div>
         </div>
