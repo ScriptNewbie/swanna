@@ -40,6 +40,8 @@
   width: 100%;
   min-height: 150px;
   background-color: #3f4d7f;
+  transition: min-height 1s;
+  overflow: hidden;
 }
 
 #logo a {

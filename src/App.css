@@ -8,45 +8,30 @@ body {
   position: relative;
   top: 15px;
   background-color: #eaefff;
-  left: 50%;
-  transform: translateX(-50%);
   overflow: hidden;
   padding: 15px;
   width: 740px;
-  height: var(--height, 0px);
-  transition: width 1s, height 1s;
+  height: calc(var(--height, 0px));
+  transition: width 1s, height 1s, top 1s;
 }
 
 #maincontent.mainContentHistoria {
   width: 500px;
 }
 
-#maincontent > #fade > div {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(var(--end_width) - 30px);
-}
-
 .hide {
   transform: translateY(-150px);
-}
-
-#infoContent {
-  height: calc(var(--end_height) - 30px);
 }
 
 .fadeout {
   opacity: 0;
   animation: fadeout 400ms 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeout {
   0% {
     opacity: 1;
-  }
-  50% {
-    opacity: 0;
   }
   100% {
     opacity: 0;
@@ -55,7 +40,14 @@ body {
 
 .fadein {
   opacity: 1;
-  animation: fadein 2000ms 1;
+  animation: fadein 1000ms 1;
+}
+
+#maincontent.mainContentOgloszenia {
+  overflow: auto;
+  top: -150px;
+  width: 100vw;
+  height: calc(100vh - 40px);
 }
 
 .quickfadein {
@@ -79,26 +71,27 @@ body {
 @media (max-width: 991px) {
   #maincontent {
     left: 0 !important;
-    transform: translateX(0) !important;
     width: calc(100% - 40px) !important;
-    height: auto !important;
     top: 0px;
     margin: 20px;
-    animation: none !important;
   }
 
-  #maincontent > #fade > div {
-    left: 0 !important;
-    transform: translateX(0) !important;
-    width: auto !important;
-  }
+  #maincontent.mainContentOgloszenia {
+    top: -20px;
 
-  #infoContent {
-    display: none !important;
+    height: calc(100dvh - 50px);
   }
 
   .hide {
     transform: translateY(0) !important;
+  }
+
+  .hide #logo {
+    min-height: 0;
+  }
+
+  #infoContent {
+    top: 50px;
   }
 
   .none {

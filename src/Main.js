@@ -60,45 +60,57 @@ function Main({ wasCookies, history }) {
       </div>
       <LeftPanel currentScreen={currentScreen} />
       <div
-        id="maincontent"
-        class={currentScreen === "historia" ? "mainContentHistoria" : ""}
-        ref={content}
+        style={{ display: "flex", width: "100vw", justifyContent: "center" }}
       >
-        <div id="fade" className={transitioning ? "fadeout" : "fadein"}>
-          <Switch>
-            <Route
-              path="/kontakt"
-              render={() => (
-                <Kontakt
-                  adjustHeight={adjustHeight}
-                  setCurrentScreen={setCurrentScreen}
-                />
-              )}
-            />
-            <Route
-              path="/historia"
-              render={() => (
-                <Historia
-                  setCurrentScreen={setCurrentScreen}
-                  adjustHeight={adjustHeight}
-                />
-              )}
-            />
-            <Route
-              path="/nabozenstwa"
-              render={() => <Ogloszenia setCurrentScreen={setCurrentScreen} />}
-            />
-            <Route
-              path=""
-              render={() => (
-                <Homepage
-                  setCurrentScreen={setCurrentScreen}
-                  history={history}
-                  adjustHeight={adjustHeight}
-                />
-              )}
-            />
-          </Switch>
+        <div
+          id="maincontent"
+          ref={content}
+          className={
+            currentScreen === "ogloszenia"
+              ? "mainContentOgloszenia"
+              : currentScreen === "historia"
+              ? "mainContentHistoria"
+              : ""
+          }
+        >
+          <div id="fade" className={transitioning ? "fadeout" : "fadein"}>
+            <Switch>
+              <Route
+                path="/kontakt"
+                render={() => (
+                  <Kontakt
+                    adjustHeight={adjustHeight}
+                    setCurrentScreen={setCurrentScreen}
+                  />
+                )}
+              />
+              <Route
+                path="/historia"
+                render={() => (
+                  <Historia
+                    setCurrentScreen={setCurrentScreen}
+                    adjustHeight={adjustHeight}
+                  />
+                )}
+              />
+              <Route
+                path="/nabozenstwa"
+                render={() => (
+                  <Ogloszenia setCurrentScreen={setCurrentScreen} />
+                )}
+              />
+              <Route
+                path=""
+                render={() => (
+                  <Homepage
+                    setCurrentScreen={setCurrentScreen}
+                    history={history}
+                    adjustHeight={adjustHeight}
+                  />
+                )}
+              />
+            </Switch>
+          </div>
         </div>
       </div>
       <OneSignalModule />
