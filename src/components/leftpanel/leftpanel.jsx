@@ -3,7 +3,10 @@ import Link from "../Link";
 import "./leftpanel.css";
 import $ from "jquery";
 
-function LeftPanel() {
+function LeftPanel({ currentScreen }) {
+  let currentClass = "";
+  if (currentScreen === "ogloszenia") currentClass = "mszeHidden";
+  else if (currentScreen === "historia") currentClass = "mszeHist";
   const showKosMap = () => {
     $("#kosMapContainer").css({
       display: "block",
@@ -47,7 +50,7 @@ function LeftPanel() {
   }, []);
   return (
     <div>
-      <div id="msze">
+      <div id="msze" className={currentClass}>
         Msze święte w niedzielę:
         <br />
         <br />

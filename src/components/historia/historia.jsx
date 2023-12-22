@@ -2,15 +2,11 @@ import React, { useEffect } from "react";
 import $ from "jquery";
 import "./historia.css";
 
-function Historia({ setStyle }) {
+function Historia({ setStyle, setCurrentScreen }) {
   useEffect(() => {
-    $("#msze").addClass("mszeHist");
+    setCurrentScreen("historia");
     let height = $("#historiaContent")[0].offsetHeight + 30;
     setStyle(500, height);
-
-    return () => {
-      $("#msze").removeClass("mszeHist");
-    };
   }, []);
 
   return (

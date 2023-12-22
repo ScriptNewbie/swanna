@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import $ from "jquery";
+import FadeTransitionContext from "../contexts/fadeTransitionContext";
 
 function Link({ to, children, className }) {
   const history = useHistory();
+  const { setTransitioning } = useContext(FadeTransitionContext);
   const handleClick = (e) => {
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();
@@ -12,11 +13,10 @@ function Link({ to, children, className }) {
         behavior: "smooth",
       });
 
-      $("#fade").removeClass("fadein");
-      $("#fade").addClass("fadeout");
-
+      setTransitioning(true);
       setTimeout(() => {
         history.push(to);
+        setTransitioning(false);
       }, 200);
     }
   };

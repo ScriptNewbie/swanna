@@ -1,15 +1,8 @@
 import React, { useEffect } from "react";
-import $ from "jquery";
 
-function Ogloszenia() {
+function Ogloszenia({ setCurrentScreen }) {
   useEffect(() => {
-    $("#msze").addClass("mszeHidden");
-    $("#top").addClass("hide");
-
-    return () => {
-      $("#top").removeClass("hide");
-      $("#msze").removeClass("mszeHidden");
-    };
+    setCurrentScreen("ogloszenia");
   }, []);
 
   return (

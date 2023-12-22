@@ -7,10 +7,12 @@ import Delimiter from "./delimiter";
 import Link from "../Link";
 
 let blockHome = false;
-function Homepage({ setStyle, history }) {
+function Homepage({ setStyle, setCurrentScreen }) {
   const [content, setContent] = useState([]);
 
   useEffect(() => {
+    setCurrentScreen("homepage");
+
     $("#maincontent").css({ height: "var(--end_height)" });
     blockHome = false;
     const daneParafii = {

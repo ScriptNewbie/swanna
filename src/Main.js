@@ -5,18 +5,20 @@ import Homepage from "./components/homepage";
 import Ogloszenia from "./components/ogloszenia";
 import Historia from "./components/historia";
 import Kontakt from "./components/kontakt";
-import React, { useEffect, useState } from "react";
-import $ from "jquery";
+import React, { useContext, useEffect, useState } from "react";
 import LeftPanel from "./components/leftpanel";
 import Cookies from "js-cookie";
 
 import OneSignal from "react-onesignal";
 import OneSignalModule from "./components/onesignal";
+import FadeTransitionContext from "./contexts/fadeTransitionContext";
 
 const resize_duration = 1000;
 let ready = true;
 
-function Main({ wasCookies, location, history }) {
+function Main({ wasCookies, history }) {
+  const { transitioning } = useContext(FadeTransitionContext);
+
   const [style, setStyleObject] = useState({
     start_width: 740,
     end_width: 740,
@@ -26,8 +28,6 @@ function Main({ wasCookies, location, history }) {
 
   useEffect(() => {
     ready = false;
-    $("#fade").addClass("fadein");
-    $("#fade").removeClass("fadeout");
     setTimeout(() => {
       ready = true;
     }, resize_duration);
@@ -84,27 +84,48 @@ function Main({ wasCookies, location, history }) {
     setStyleObject(_style);
   };
 
+  const [currentScreen, setCurrentScreen] = useState("homepage");
+
   return (
     <div>
-      <div id="top">
+      <div id="top" class={currentScreen === "ogloszenia" ? "hide" : ""}>
         <Menu />
       </div>
-      <LeftPanel />
+      <LeftPanel currentScreen={currentScreen} />
       <div id="maincontent" style={getStyle()}>
-        <div id="fade">
+        <div id="fade" className={transitioning ? "fadeout" : "fadein"}>
           <Switch>
             <Route
               path="/kontakt"
-              render={() => <Kontakt setStyle={setStyle} />}
+              render={() => (
+                <Kontakt
+                  setCurrentScreen={setCurrentScreen}
+                  setStyle={setStyle}
+                />
+              )}
             />
             <Route
               path="/historia"
-              render={() => <Historia setStyle={setStyle} />}
+              render={() => (
+                <Historia
+                  setCurrentScreen={setCurrentScreen}
+                  setStyle={setStyle}
+                />
+              )}
             />
-            <Route path="/nabozenstwa" render={() => <Ogloszenia />} />
+            <Route
+              path="/nabozenstwa"
+              render={() => <Ogloszenia setCurrentScreen={setCurrentScreen} />}
+            />
             <Route
               path=""
-              render={() => <Homepage setStyle={setStyle} history={history} />}
+              render={() => (
+                <Homepage
+                  setCurrentScreen={setCurrentScreen}
+                  setStyle={setStyle}
+                  history={history}
+                />
+              )}
             />
           </Switch>
         </div>

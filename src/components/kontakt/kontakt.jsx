@@ -3,9 +3,10 @@ import $ from "jquery";
 import Map from "./map";
 import "./kontakt.css";
 
-function Kontakt({ setStyle }) {
+function Kontakt({ setStyle, setCurrentScreen }) {
   const [currentMap, setCurrentMap] = useState("tg");
   useEffect(() => {
+    setCurrentScreen("kontakt");
     let height = $("#contactContent")[0].offsetHeight + 30;
     setStyle(740, height);
   }, []);
