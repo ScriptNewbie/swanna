@@ -1,0 +1,12 @@
+#infoContent {
+  opacity: 0;
+  transition: opacity 800ms ease-in;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+#infoContent.infoContentLoaded {
+  opacity: 1;
+}
