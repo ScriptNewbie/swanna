@@ -59,9 +59,7 @@ function Main({ wasCookies, history }) {
         <Menu />
       </div>
       <LeftPanel currentScreen={currentScreen} />
-      <div
-        style={{ display: "flex", width: "100vw", justifyContent: "center" }}
-      >
+      <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
         <div
           id="maincontent"
           ref={content}
