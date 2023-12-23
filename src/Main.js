@@ -55,7 +55,7 @@ function Main({ wasCookies, history }) {
 
   return (
     <div>
-      <div id="top" class={currentScreen === "ogloszenia" ? "hide" : ""}>
+      <div id="top" className={currentScreen === "ogloszenia" ? "hide" : ""}>
         <Menu />
       </div>
       <LeftPanel currentScreen={currentScreen} />
@@ -73,7 +73,14 @@ function Main({ wasCookies, history }) {
               : ""
           }
         >
-          <div id="fade" className={transitioning ? "fadeout" : "fadein"}>
+          <div
+            id="fade"
+            className={
+              (currentScreen === "ogloszenia" ? "w-100" : "") +
+              " " +
+              (transitioning ? "fadeout" : "fadein")
+            }
+          >
             <Switch>
               <Route
                 path="/kontakt"

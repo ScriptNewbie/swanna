@@ -3,9 +3,18 @@ import "./historia.css";
 
 function Historia({ setCurrentScreen, adjustHeight }) {
   const content = useRef(null);
+
+  const handleResize = () => {
+    adjustHeight(content.current.scrollHeight);
+  };
+
   useEffect(() => {
     setCurrentScreen("historia");
     adjustHeight(content.current.scrollHeight);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (

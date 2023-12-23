@@ -29,10 +29,6 @@ body {
   transform: translateY(-150px);
 }
 
-#fade {
-  width: 100%;
-}
-
 .fadeout {
   opacity: 0;
   animation: fadeout 400ms 1;
@@ -110,4 +106,8 @@ body {
   .none {
     display: none;
   }
+}
+
+.modal-body {
+  text-align: justify;
 }

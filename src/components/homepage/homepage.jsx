@@ -9,6 +9,10 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
   const contentPlace = useRef(null);
   const [content, setContent] = useState([]);
 
+  const handleResize = () => {
+    adjustHeight(contentPlace.current.scrollHeight);
+  };
+
   useEffect(() => {
     setCurrentScreen("homepage");
 
@@ -44,7 +48,12 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
 
     fetchData().finally(() => {
       adjustHeight(contentPlace.current.scrollHeight);
+      window.addEventListener("resize", handleResize);
     });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (

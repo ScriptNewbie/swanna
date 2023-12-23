@@ -5,9 +5,18 @@ import "./kontakt.css";
 function Kontakt({ setCurrentScreen, adjustHeight }) {
   const content = useRef(null);
   const [currentMap, setCurrentMap] = useState("tg");
+
+  const handleResize = () => {
+    adjustHeight(content.current.scrollHeight);
+  };
+
   useEffect(() => {
     setCurrentScreen("kontakt");
     adjustHeight(content.current.scrollHeight);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
   return (
     <div id="contactContent" ref={content}>
