@@ -73,14 +73,7 @@ function Main({ wasCookies, history }) {
               : ""
           }
         >
-          <div
-            id="fade"
-            className={
-              (currentScreen === "ogloszenia" ? "w-100" : "") +
-              " " +
-              (transitioning ? "fadeout" : "fadein")
-            }
-          >
+          <div id="fade" className={transitioning ? "fadeout" : "fadein"}>
             <Switch>
               <Route
                 path="/kontakt"

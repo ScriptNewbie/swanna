@@ -3,7 +3,6 @@
 body {
   font-family: "Times New Roman", Tinos, Times, serif;
   background-color: #8a9ee5;
-  overflow-y: scroll;
 }
 
 #maincontent {
@@ -42,6 +41,10 @@ body {
   100% {
     opacity: 0;
   }
+}
+
+#fade {
+  width: 100%;
 }
 
 .fadein {
