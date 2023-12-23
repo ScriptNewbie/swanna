@@ -1,3 +1,7 @@
+#contactContent {
+  width: 710px;
+}
+
 #map {
   position: relative;
   height: 600px;
@@ -93,4 +97,10 @@
   transform: translateY(30px);
   opacity: 1 !important;
   width: 100%;
+}
+
+@media (max-width: 991px) {
+  #contactContent {
+    width: auto;
+  }
 }

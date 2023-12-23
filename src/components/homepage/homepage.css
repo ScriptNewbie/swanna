@@ -23,3 +23,13 @@
 .post_home > p {
   margin: 0em;
 }
+
+#newsContent {
+  width: 710px;
+}
+
+@media (max-width: 991px) {
+  #newsContent {
+    width: auto;
+  }
+}

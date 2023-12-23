@@ -5,14 +5,16 @@ body {
 }
 
 #maincontent {
+  display: flex;
+  justify-content: center;
   position: relative;
   top: 15px;
   background-color: #eaefff;
   overflow: hidden;
   padding: 15px;
   width: 740px;
-  height: calc(var(--height, 0px));
-  transition: width 1s, height 1s, top 1s;
+  height: calc(var(--height, 0px) + 15px);
+  transition: width 1s, height 1s, top 1s, background-color 1s;
 }
 
 #maincontent.mainContentHistoria {
@@ -48,6 +50,7 @@ body {
   top: -150px;
   width: 100vw;
   height: calc(100vh - 40px);
+  background-color: rgb(150, 150, 150);
 }
 
 .quickfadein {
