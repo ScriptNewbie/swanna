@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell as solidBell } from "@fortawesome/free-solid-svg-icons";
 import { faBell as regularBell } from "@fortawesome/free-regular-svg-icons";
 import OneSignal from "react-onesignal";
-import $ from "jquery";
 
 function NotificationBell() {
   const [subscribed, setSubscribed] = useState(false);
@@ -22,6 +21,8 @@ function NotificationBell() {
   return (
     <div>
       <div
+        data-bs-toggle="modal"
+        data-bs-target="#myNotificationsModal"
         style={{
           position: "absolute",
           top: 5,
@@ -36,12 +37,6 @@ function NotificationBell() {
           alignItems: "center",
           cursor: "pointer",
           display: works ? "flex" : "none",
-        }}
-        onClick={() => {
-          $("#modalOneSignal").css({
-            display: "block",
-            animation: "fadein 500ms 1",
-          });
         }}
       >
         <FontAwesomeIcon icon={subscribed ? solidBell : regularBell} />

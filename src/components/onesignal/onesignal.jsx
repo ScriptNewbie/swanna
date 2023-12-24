@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import OneSignal from "react-onesignal";
-import $ from "jquery";
 import "./onesignal.css";
 
 function OneSignalModule() {
@@ -19,11 +18,24 @@ function OneSignalModule() {
 
   return (
     <div>
-      <div id="modalOneSignal">
-        <div className="card">
-          <div className="card-header">Powiadomienia</div>
-          <div className="card-body">
-            <p className="card-text">
+      <div
+        className="modal fade"
+        id="myNotificationsModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
               {subscribed ? (
                 <span>
                   <FontAwesomeIcon icon={faCheck} style={{ color: "green" }} />{" "}
@@ -43,8 +55,8 @@ function OneSignalModule() {
               anulowałeś subskrybcję, a nadal otrzymujesz powiadomienia, lub
               jeśli zasubskrybowałeś, a nie otrzymujesz powiadomień, napisz na
               adres e-mail: admin@swanna.net.pl
-            </p>
-            <center>
+            </div>
+            <div className="modal-footer">
               <button
                 onClick={() => {
                   OneSignal.isPushNotificationsEnabled((subscribed) => {
@@ -70,22 +82,7 @@ function OneSignalModule() {
                   <span>Subskrybuj</span>
                 )}
               </button>
-              <button
-                className="btn btn-secondary m-2"
-                onClick={() => {
-                  setTimeout(() => {
-                    $("#modalOneSignal").css({
-                      display: "none",
-                    });
-                  }, 500);
-                  $("#modalOneSignal").css({
-                    animation: "fadeout 1000ms 1",
-                  });
-                }}
-              >
-                Zamknij okno
-              </button>
-            </center>
+            </div>
           </div>
         </div>
       </div>
