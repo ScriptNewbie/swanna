@@ -57,7 +57,7 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
   }, []);
 
   return (
-    <div id="newsContent" ref={contentPlace}>
+    <div id="newsContent" class="center" ref={contentPlace}>
       {content.map((post, index) => (
         <div key={post.id + index}>
           <News title={post.nazwa} date={post.data} content={post.tresc} />

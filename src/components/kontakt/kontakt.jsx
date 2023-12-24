@@ -19,7 +19,7 @@ function Kontakt({ setCurrentScreen, adjustHeight }) {
     };
   }, []);
   return (
-    <div id="contactContent" ref={content}>
+    <div id="contactContent" class="center" ref={content}>
       <div className="grid-container">
         <div className="leftHeader">
           <b>Adres kościoła pw. Świętej Anny:</b>

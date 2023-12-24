@@ -114,3 +114,11 @@ body {
 .modal-body {
   text-align: justify;
 }
+
+@media (min-width: 992px) {
+  .center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
