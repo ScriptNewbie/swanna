@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TransitionContext from "../contexts/TransitionContext";
 
+export let navigate = (e, destination) => {};
+
 function Link({ to, children, className }) {
   const history = useHistory();
   const { setTransitioning } = useContext(TransitionContext);
@@ -21,7 +23,7 @@ function Link({ to, children, className }) {
     }
   };
 
-  window.reactNavigate = handleClick; //Eksport nawigacji do window - polega na tym nawigacja z newsów
+  navigate = handleClick;
 
   return (
     <a className={className} onClick={handleClick} href={to}>

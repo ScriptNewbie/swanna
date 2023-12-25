@@ -3,7 +3,7 @@ import axios from "axios";
 import "./homepage.css";
 import News from "./news";
 import Delimiter from "./delimiter";
-import Link from "../Link";
+import Link, { navigate } from "../Link";
 
 let elements = [];
 
@@ -52,10 +52,9 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
       const newsContent = document.getElementById("newsContent");
       if (newsContent) {
         elements = newsContent.querySelectorAll("[data-destination]");
-        //Polega na funkcji wyeksportowanej do windowa w komponencie Link
         elements.forEach(function (element) {
           const clickHandler = (e) => {
-            window.reactNavigate(e, element.dataset.destination);
+            navigate(e, element.dataset.destination);
           };
 
           element.addEventListener("click", clickHandler);
