@@ -5,7 +5,7 @@ import TransitionContext from "../contexts/TransitionContext";
 function Link({ to, children, className }) {
   const history = useHistory();
   const { setTransitioning } = useContext(TransitionContext);
-  const handleClick = (e) => {
+  const handleClick = (e, destination = to) => {
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();
       window.scrollTo({
@@ -15,11 +15,14 @@ function Link({ to, children, className }) {
 
       setTransitioning(true);
       setTimeout(() => {
-        history.push(to);
+        history.push(destination);
         setTransitioning(false);
       }, 200);
     }
   };
+
+  window.reactNavigate = handleClick; //Eksport nawigacji do window - polega na tym nawigacja z newsów
+
   return (
     <a className={className} onClick={handleClick} href={to}>
       {children}
