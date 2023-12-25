@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "react-pdf/dist/Page/TextLayer.css";
-import { pdfjs } from "react-pdf";
+
 import { Document, Page } from "react-pdf";
 import "./ogloszenia.css";
 import Problem from "./problem";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+import Link from "../Link";
 
 const urls = [
   "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf",
@@ -65,6 +64,13 @@ function Ogloszenia({ setCurrentScreen }) {
         >
           Mam problem
         </button>
+        <Link
+          to="/pdf/koleda2324_rc1.pdf"
+          type="button"
+          className="btn btn-warning"
+        >
+          Plan kolędy
+        </Link>
         <button onClick={nextWeek} type="button" className="btn btn-success">
           <span id="infoBtnText">
             {current === 0 ? "Następny tydzień" : "Poprzedni tydzień"}

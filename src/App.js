@@ -3,6 +3,8 @@ import CookiesInfo from "./components/cookies";
 import Appk from "./Main";
 import Cookies from "js-cookie";
 import { TransitionProvider } from "./contexts/TransitionContext";
+import { pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 function App() {
   useEffect(() => {

@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 import OneSignal from "react-onesignal";
 import OneSignalModule from "./components/onesignal";
 import TransitionContext from "./contexts/TransitionContext";
+import PdfReader from "./components/ogloszenia/pdfReader";
 
 function Main({ wasCookies, history }) {
   const { transitioning } = useContext(TransitionContext);
@@ -96,6 +97,10 @@ function Main({ wasCookies, history }) {
                 render={() => (
                   <Ogloszenia setCurrentScreen={setCurrentScreen} />
                 )}
+              />
+              <Route
+                path="/pdf/:id"
+                render={() => <PdfReader setCurrentScreen={setCurrentScreen} />}
               />
               <Route
                 path=""

@@ -46,13 +46,13 @@ function Menu() {
                 <Link className="nav-link" to="/">
                   Aktualności
                 </Link>
-                <Link className="nav-link" to="nabozenstwa">
+                <Link className="nav-link" to="/nabozenstwa">
                   Porządek nabożeństw
                 </Link>
-                <Link className="nav-link" to="historia">
+                <Link className="nav-link" to="/historia">
                   Historia kościoła
                 </Link>
-                <Link className="nav-link last" to="kontakt">
+                <Link className="nav-link last" to="/kontakt">
                   Kontakt
                 </Link>
               </div>
