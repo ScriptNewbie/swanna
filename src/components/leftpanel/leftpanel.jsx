@@ -1,38 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "../Link";
 import "./leftpanel.css";
-import $ from "jquery";
+import Map from "../map";
 
 function LeftPanel({ currentScreen }) {
+  const [mapVisible, setMapVisible] = useState("");
+  const [mapClass, setMapClass] = useState("mapHidden");
+
   let currentClass = "";
   if (currentScreen === "ogloszenia") currentClass = "mszeHidden";
   else if (currentScreen === "historia") currentClass = "mszeHist";
-  const showKosMap = () => {
-    $("#kosMapContainer").css({
-      display: "block",
-      animation: "fadein 1s 1",
-    });
+
+  const showMap = () => {
+    setMapClass("mapTransitioning");
+    setTimeout(() => {
+      setMapClass("mapVisible");
+    }, 0);
   };
 
-  const closeKosMap = () => {
-    $("#kosMapContainer").css({ animation: "fadeout 1000ms 1" });
-    setTimeout(() => {
-      $("#kosMapContainer").css({ display: "none" });
-    }, 500);
+  const showKosMap = () => {
+    setMapVisible("kscl");
+    showMap();
   };
 
   const showKapMap = () => {
-    $("#kapMapContainer").css({
-      display: "block",
-      animation: "fadein 1s 1",
-    });
+    setMapVisible("kapl");
+    showMap();
   };
 
-  const closeKapMap = () => {
-    $("#kapMapContainer").css({ animation: "fadeout 1000ms 1" });
+  const closeMap = () => {
+    setMapClass("mapTransitioning");
     setTimeout(() => {
-      $("#kapMapContainer").css({ display: "none" });
-    }, 500);
+      setMapClass("mapHidden");
+    }, 200);
   };
 
   useEffect(() => {
@@ -92,22 +92,8 @@ function LeftPanel({ currentScreen }) {
         </small>
         <br />
       </div>
-      <div id="kosMapContainer">
-        <iframe
-          title="kosMap"
-          id="kosMap"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9833.1220241138!2d18.83755033754838!3d50.43553763422281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x57731b1c74e7bd22!2zS2_Fm2Npw7PFgiBwLncuIMWbdy4gQW5ueQ!5e0!3m2!1spl!2spl!4v1500573216123"
-          frameBorder="0"
-          style={{
-            position: "fixed",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        ></iframe>
+      <div className={"mapContainer " + mapClass}>
+        <Map className="leftPanelMap" key={mapVisible} map={mapVisible} />
         <button
           style={{
             position: "fixed",
@@ -115,37 +101,7 @@ function LeftPanel({ currentScreen }) {
             right: "15px",
             cursor: "pointer",
           }}
-          onClick={closeKosMap}
-          type="button"
-          className="btn btn-secondary"
-        >
-          Zamknij mapę
-        </button>
-      </div>
-      <div id="kapMapContainer">
-        <iframe
-          title="kapMap"
-          id="kapMap"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9679.660958362772!2d18.83830598088312!3d50.42819036350281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x65d19ba30a1ef36e!2sParafia+Rzymsko-katolicka+p.w.+%C5%9Bw.+Anny+-+Probostwo!5e0!3m2!1spl!2spl!4v1500590667015"
-          frameBorder="0"
-          style={{
-            position: "fixed",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        ></iframe>
-        <button
-          style={{
-            position: "fixed",
-            top: "15px",
-            right: "15px",
-            cursor: "pointer",
-          }}
-          onClick={closeKapMap}
+          onClick={closeMap}
           type="button"
           className="btn btn-secondary"
         >

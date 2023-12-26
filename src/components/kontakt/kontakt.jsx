@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Map from "./map";
+import Map from "../map";
 import "./kontakt.css";
 
 function Kontakt({ setCurrentScreen, adjustHeight }) {
@@ -92,7 +92,7 @@ function Kontakt({ setCurrentScreen, adjustHeight }) {
           </div>
           <div id="map">
             <div id="mapwrap">
-              <Map map={currentMap} />
+              <Map className="googleMap" map={currentMap} />
             </div>
           </div>
         </div>
