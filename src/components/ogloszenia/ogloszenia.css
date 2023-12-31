@@ -27,7 +27,12 @@
 }
 
 #infoBtnText {
+  opacity: 1;
   transition: opacity 200ms;
+}
+
+#infoBtnText.invisible {
+  opacity: 0;
 }
 
 #infoContent .alert {
