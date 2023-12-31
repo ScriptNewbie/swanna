@@ -11,9 +11,11 @@ function PdfDocument({
   transitioning = false,
 }) {
   const getScale = () => {
-    return window.matchMedia("(max-width: 500px)").matches
+    return window.matchMedia("(max-width: 370px)").matches
+      ? 0.35
+      : window.matchMedia("(max-width: 520px)").matches
       ? 0.55
-      : window.matchMedia("(max-width: 750px)").matches
+      : window.matchMedia("(max-width: 760px)").matches
       ? 0.8
       : 1.2;
   };

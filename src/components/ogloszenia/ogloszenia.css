@@ -45,6 +45,10 @@
 }
 
 @media (max-width: 991px) {
+  #infoContentButtons .btn {
+    min-width: auto;
+  }
+
   #infoContentButtons {
     flex-direction: column;
     width: 100%;
