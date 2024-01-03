@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import ApiClient from "../../services/apiClient";
+
+const client = new ApiClient("/backend/mail.php");
 
 function Problem({ nextWeek, current }) {
   const [response, setResponse] = useState("");
@@ -73,9 +75,9 @@ function Problem({ nextWeek, current }) {
               <button
                 onClick={(e) => {
                   e.target.classList.add("btn-breathing");
-                  axios
-                    .get("https://api.swanna.net.pl/backend/mail.php")
-                    .then(({ data }) => {
+                  client
+                    .get()
+                    .then((data) => {
                       setResponse(data);
                     })
                     .catch(() => {

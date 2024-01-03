@@ -7,10 +7,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const client = new QueryClient();
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <QueryClientProvider client={client}>
+      <App />
+    </QueryClientProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

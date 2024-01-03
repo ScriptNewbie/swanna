@@ -1,86 +1,85 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import "./homepage.css";
 import News from "./news";
 import Delimiter from "./delimiter";
 import Link, { navigate } from "../Link";
+import useNews from "../../hooks/useNews";
 
 let elements = [];
 
+const daneParafii = {
+  id: -1,
+  nazwa: "Dane Parafii",
+  data: "Przypięty",
+  tresc: (
+    <p>
+      Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na
+      podstronie <Link to="/kontakt">kontakt!</Link>
+    </p>
+  ),
+};
+
+const error = {
+  nazwa: "Błąd połączenia z bazą danych",
+  data: "01/01/1970",
+  tresc:
+    "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
+};
+
 function Homepage({ setCurrentScreen, adjustHeight }) {
-  const contentPlace = useRef(null);
-  const [content, setContent] = useState([]);
+  const content = useRef(null);
+
+  const { data, isError, isSuccess } = useNews();
+  const news = isSuccess ? [...data] : [];
+  news.unshift(daneParafii);
+  if (isError) news.push(error);
 
   const handleResize = () => {
-    adjustHeight(contentPlace.current.scrollHeight);
+    adjustHeight(content.current.scrollHeight);
   };
 
   useEffect(() => {
-    setCurrentScreen("homepage");
-
-    const daneParafii = {
-      id: -1,
-      nazwa: "Dane Parafii",
-      data: "Przypięty",
-      tresc: (
-        <p>
-          Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz
-          na podstronie <Link to="/kontakt">kontakt!</Link>
-        </p>
-      ),
-    };
-    const fetchData = async () => {
-      try {
-        const { data: content } = await axios.get(
-          "https://api.swanna.net.pl/index.php"
-        );
-        setContent([daneParafii, ...content]);
-      } catch (e) {
-        const content = [
-          {
-            nazwa: "Błąd połączenia z bazą danych",
-            data: "01/01/1970",
-            tresc:
-              "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
-          },
-        ];
-        setContent([daneParafii, ...content]);
-      }
-    };
-
-    fetchData().finally(() => {
-      const newsContent = document.getElementById("newsContent");
-      if (newsContent) {
-        elements = newsContent.querySelectorAll("[data-destination]");
-        elements.forEach(function (element) {
-          const clickHandler = (e) => {
-            navigate(e, element.dataset.destination);
-          };
-
-          element.addEventListener("click", clickHandler);
-          element._clickHandler = clickHandler;
-        });
-      }
-
-      adjustHeight(contentPlace.current.scrollHeight);
-      window.addEventListener("resize", handleResize);
-    });
-
-    return () => {
+    const cleanup = () => {
       elements.forEach(function (element) {
         element.removeEventListener("click", element._clickHandler);
       });
       elements = [];
+    };
+    cleanup();
+
+    const newsContent = document.getElementById("newsContent");
+    if (newsContent) {
+      elements = newsContent.querySelectorAll("[data-destination]");
+      elements.forEach(function (element) {
+        const clickHandler = (e) => {
+          navigate(e, element.dataset.destination);
+        };
+
+        element.addEventListener("click", clickHandler);
+        element._clickHandler = clickHandler;
+      });
+    }
+
+    adjustHeight(content.current.scrollHeight);
+
+    return cleanup;
+  }, [news]);
+
+  useEffect(() => {
+    setCurrentScreen("homepage");
+
+    window.addEventListener("resize", handleResize);
+    return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div id="newsContent" className="center" ref={contentPlace}>
-      {content.map((post, index) => (
+    <div id="newsContent" className="center" ref={content}>
+      {news.map((post, index) => (
         <div key={post.id + index}>
           <News title={post.nazwa} date={post.data} content={post.tresc} />
-          <Delimiter index={index} lastIndex={content.length - 1} />
+          <Delimiter index={index} lastIndex={news.length - 1} />
         </div>
       ))}
     </div>
