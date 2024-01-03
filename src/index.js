@@ -8,14 +8,19 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { TransitionProvider } from "./contexts/TransitionContext";
+import { pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const client = new QueryClient();
 
 ReactDOM.render(
   <BrowserRouter>
-    <QueryClientProvider client={client}>
-      <App />
-    </QueryClientProvider>
+    <TransitionProvider>
+      <QueryClientProvider client={client}>
+        <App />
+      </QueryClientProvider>
+    </TransitionProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
