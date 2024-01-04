@@ -93,7 +93,12 @@ function LeftPanel({ currentScreen }) {
         <br />
       </div>
       <div className={"mapContainer " + mapClass}>
-        <Map className="leftPanelMap" key={mapVisible} map={mapVisible} />
+        <Map
+          className="leftPanelMap"
+          key={mapVisible}
+          map={mapVisible}
+          onNavigateToPolicy={closeMap}
+        />
         <button
           style={{
             position: "fixed",

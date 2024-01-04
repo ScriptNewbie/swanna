@@ -12,6 +12,7 @@ import OneSignalModule from "./components/onesignal";
 import TransitionContext from "./contexts/TransitionContext";
 import PdfReader from "./components/ogloszenia/pdfReader";
 import CookiesContext from "./contexts/cookiesContext";
+import CookiesSite from "./components/cookies/Cookies";
 
 function App({ history }) {
   const { transitioning } = useContext(TransitionContext);
@@ -77,6 +78,15 @@ function App({ history }) {
                 path="/nabozenstwa"
                 render={() => (
                   <Ogloszenia setCurrentScreen={setCurrentScreen} />
+                )}
+              />
+              <Route
+                path="/cookies"
+                render={() => (
+                  <CookiesSite
+                    adjustHeight={adjustHeight}
+                    setCurrentScreen={setCurrentScreen}
+                  />
                 )}
               />
               <Route
