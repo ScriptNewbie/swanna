@@ -4,7 +4,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import OneSignal from "react-onesignal";
 import "./onesignal.css";
 import CookiesContext from "../../contexts/cookiesContext";
-import CookiesMessage from "../CookiesMessage";
+import CookiesMessage from "../cookies/CookiesMessage";
 import CookiesAcceptButton from "../cookies/CookiesAcceptButton";
 
 function OneSignalModule() {
