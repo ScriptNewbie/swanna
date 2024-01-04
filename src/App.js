@@ -13,6 +13,7 @@ import TransitionContext from "./contexts/TransitionContext";
 import PdfReader from "./components/ogloszenia/pdfReader";
 import CookiesContext from "./contexts/cookiesContext";
 import CookiesSite from "./components/cookies/Cookies";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function App({ history }) {
   const { transitioning } = useContext(TransitionContext);
@@ -42,7 +43,14 @@ function App({ history }) {
         <Menu />
       </div>
       <LeftPanel currentScreen={currentScreen} />
-      <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          alignItems: "center",
+        }}
+      >
         <div
           id="maincontent"
           ref={content}
@@ -105,6 +113,16 @@ function App({ history }) {
               />
             </Switch>
           </div>
+        </div>
+        <div
+          id="footer"
+          style={{
+            display:
+              currentScreen === "ogloszenia" || !cookiesEnabled ? "none" : "",
+          }}
+          className="mt-3"
+        >
+          <Link to="/cookies">Polityka Cookies</Link>
         </div>
       </div>
       <OneSignalModule />

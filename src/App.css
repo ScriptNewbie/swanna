@@ -124,3 +124,13 @@ body {
     transform: translateX(-50%);
   }
 }
+
+#footer {
+  font-size: small;
+  font-style: italic;
+}
+
+#footer a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
