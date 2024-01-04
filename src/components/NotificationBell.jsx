@@ -13,23 +13,11 @@ function NotificationBell() {
     if (cookiesEnabled) {
       OneSignal.init({
         appId: "6b57325a-836e-43c3-a551-04928b8e7285",
-        promptOptions: {
-          slidedown: {
-            enabled: true,
-            autoPrompt: true,
-            actionMessage:
-              "Czy chcesz otrzymywać powiadomienia o nowych ogłoszeniach i aktualnościach?",
-            acceptButtonText: "Tak",
-            cancelButtonText: "Nie",
-          },
-        },
         welcomeNotification: {
           title: "Szczęść Boże!",
           message:
             "Jest to automatyczna wiadomość powitalna. Dziękujemy za zapisanie się do powiadomień! Funkcjonalność jest w fazie testów i może nie działać prawidłowo!",
         },
-      }).then(() => {
-        OneSignal.showSlidedownPrompt().then(() => {});
       });
 
       OneSignal.on("subscriptionChange", function (subscribed) {

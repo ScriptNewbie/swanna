@@ -17,6 +17,15 @@ function Map({ map, className, onNavigateToPolicy }) {
         style={{ opacity: cookiesEnabled ? 0 : 1 }}
         className={className + " mapCookies"}
       >
+        <span
+          style={{
+            fontSize: "1.8rem",
+            fontWeight: "bold",
+            marginBottom: "1rem",
+          }}
+        >
+          Mapa
+        </span>
         <CookiesMessage onNavigateToPolicy={onNavigateToPolicy} />
         <br />
         <CookiesAcceptButton />
