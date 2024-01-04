@@ -20,7 +20,7 @@ function Cookies({ setCurrentScreen, adjustHeight }) {
   }, []);
 
   return (
-    <div id="cookiesContent" className="center" ref={content}>
+    <div id="newsContent" className="center" ref={content}>
       <div style={{ fontSize: "3rem", textAlign: "center", marginBottom: 10 }}>
         Pliki Cookies
       </div>
