@@ -46,9 +46,8 @@ function App({ history }) {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
           width: "100%",
-          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div
@@ -114,17 +113,19 @@ function App({ history }) {
             </Switch>
           </div>
         </div>
-        <div
-          id="footer"
-          style={{
-            display:
-              currentScreen === "ogloszenia" || !cookiesEnabled ? "none" : "",
-          }}
-          className="mt-3"
-        >
-          <Link to="/cookies">Polityka Cookies</Link>
-        </div>
       </div>
+
+      <div
+        id="footer"
+        style={{
+          display:
+            currentScreen === "ogloszenia" || !cookiesEnabled ? "none" : "",
+        }}
+        className="mt-3"
+      >
+        <Link to="/cookies">Polityka Cookies</Link>
+      </div>
+
       <OneSignalModule />
     </div>
   );
