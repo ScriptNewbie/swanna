@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import CookiesContext from "../contexts/cookiesContext";
 import CookiesMessage from "./cookies/CookiesMessage";
 import CookiesAcceptButton from "./cookies/CookiesAcceptButton";
@@ -10,7 +10,7 @@ const maps = {
 };
 
 function Map({ map, className, onNavigateToPolicy }) {
-  const { cookiesEnabled, setCookiesEnabled } = useContext(CookiesContext);
+  const { cookiesEnabled } = useContext(CookiesContext);
   return (
     <>
       <div
