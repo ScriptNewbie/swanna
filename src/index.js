@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { TransitionProvider } from "./contexts/TransitionContext";
 import { pdfjs } from "react-pdf";
+import { CookiesProvider } from "./contexts/cookiesContext";
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const client = new QueryClient();
@@ -17,9 +18,11 @@ const client = new QueryClient();
 ReactDOM.render(
   <BrowserRouter>
     <TransitionProvider>
-      <QueryClientProvider client={client}>
-        <App />
-      </QueryClientProvider>
+      <CookiesProvider>
+        <QueryClientProvider client={client}>
+          <App />
+        </QueryClientProvider>
+      </CookiesProvider>
     </TransitionProvider>
   </BrowserRouter>,
   document.getElementById("root")

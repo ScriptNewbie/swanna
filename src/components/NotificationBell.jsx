@@ -1,22 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell as solidBell } from "@fortawesome/free-solid-svg-icons";
 import { faBell as regularBell } from "@fortawesome/free-regular-svg-icons";
 import OneSignal from "react-onesignal";
+import CookiesContext from "../contexts/cookiesContext";
 
 function NotificationBell() {
   const [subscribed, setSubscribed] = useState(false);
-  const [works, setWorks] = useState(false);
+  const { cookiesEnabled } = useContext(CookiesContext);
 
   useEffect(() => {
-    OneSignal.on("subscriptionChange", function (subscribed) {
-      setSubscribed(subscribed);
-    });
-    OneSignal.isPushNotificationsEnabled((subscribed) => {
-      setWorks(true);
-      setSubscribed(subscribed);
-    });
-  }, []);
+    if (cookiesEnabled) {
+      OneSignal.init({
+        appId: "6b57325a-836e-43c3-a551-04928b8e7285",
+        promptOptions: {
+          slidedown: {
+            enabled: true,
+            autoPrompt: true,
+            actionMessage:
+              "Czy chcesz otrzymywać powiadomienia o nowych ogłoszeniach i aktualnościach?",
+            acceptButtonText: "Tak",
+            cancelButtonText: "Nie",
+          },
+        },
+        welcomeNotification: {
+          title: "Szczęść Boże!",
+          message:
+            "Jest to automatyczna wiadomość powitalna. Dziękujemy za zapisanie się do powiadomień! Funkcjonalność jest w fazie testów i może nie działać prawidłowo!",
+        },
+      }).then(() => {
+        OneSignal.showSlidedownPrompt().then(() => {});
+      });
+
+      OneSignal.on("subscriptionChange", function (subscribed) {
+        setSubscribed(subscribed);
+      });
+      OneSignal.isPushNotificationsEnabled((subscribed) => {
+        setSubscribed(subscribed);
+      });
+    }
+  }, [cookiesEnabled]);
 
   return (
     <div>
@@ -36,7 +59,7 @@ function NotificationBell() {
           justifyContent: "center",
           alignItems: "center",
           cursor: "pointer",
-          display: works ? "flex" : "none",
+          display: "flex",
         }}
       >
         <FontAwesomeIcon icon={subscribed ? solidBell : regularBell} />

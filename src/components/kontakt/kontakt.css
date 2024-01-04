@@ -22,6 +22,26 @@
   height: 600px;
 }
 
+.mapCookies {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 200ms;
+  background-color: #3f4d7f;
+  padding: 15px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.mapCookies a {
+  color: white;
+}
+
+.mapCookies a:hover {
+  color: white;
+}
+
 .grid-container {
   display: grid;
   grid-template-areas:

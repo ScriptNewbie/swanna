@@ -8,39 +8,25 @@ import Kontakt from "./components/kontakt";
 import React, { useContext, useEffect, useState, useRef } from "react";
 import LeftPanel from "./components/leftpanel";
 import Cookies from "js-cookie";
-
-import OneSignal from "react-onesignal";
 import OneSignalModule from "./components/onesignal";
 import TransitionContext from "./contexts/TransitionContext";
 import PdfReader from "./components/ogloszenia/pdfReader";
+import CookiesContext from "./contexts/cookiesContext";
 
 function App({ history }) {
   const { transitioning } = useContext(TransitionContext);
   const content = useRef(null);
+  const { cookiesEnabled } = useContext(CookiesContext);
 
   useEffect(() => {
-    document.getElementById("oldBrowserPrompt").style.display = "none";
+    if (cookiesEnabled) {
+      Cookies.set("allowcookies", "true", {
+        expires: 399,
+        path: "/",
+      });
+    }
 
-    OneSignal.init({
-      appId: "6b57325a-836e-43c3-a551-04928b8e7285",
-      promptOptions: {
-        slidedown: {
-          enabled: true,
-          autoPrompt: true,
-          actionMessage:
-            "Czy chcesz otrzymywać powiadomienia o nowych ogłoszeniach i aktualnościach?",
-          acceptButtonText: "Tak",
-          cancelButtonText: "Nie",
-        },
-      },
-      welcomeNotification: {
-        title: "Szczęść Boże!",
-        message:
-          "Jest to automatyczna wiadomość powitalna. Dziękujemy za zapisanie się do powiadomień! Funkcjonalność jest w fazie testów i może nie działać prawidłowo!",
-      },
-    }).then(() => {
-      OneSignal.showSlidedownPrompt().then(() => {});
-    });
+    document.getElementById("oldBrowserPrompt").style.display = "none";
   }, []);
 
   const [currentScreen, setCurrentScreen] = useState("homepage");
