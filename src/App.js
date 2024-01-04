@@ -13,7 +13,7 @@ import TransitionContext from "./contexts/TransitionContext";
 import PdfReader from "./components/ogloszenia/pdfReader";
 import CookiesContext from "./contexts/cookiesContext";
 import CookiesSite from "./components/cookies/Cookies";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Link from "./components/Link";
 
 function App({ history }) {
   const { transitioning } = useContext(TransitionContext);
