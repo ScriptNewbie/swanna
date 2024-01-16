@@ -69,7 +69,7 @@ function LeftPanel({ currentScreen }) {
         <br />
         <br />
         Pełny porządek nabożeństw znajduje się{" "}
-        <Link to="nabozenstwa">tutaj.</Link>**
+        <Link to="/nabozenstwa">tutaj.</Link>**
         <br />
         <br />
         Kancelaria <br />

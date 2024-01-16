@@ -2,27 +2,21 @@ import React, { useEffect, useRef } from "react";
 import "./homepage.css";
 import News from "./news";
 import Delimiter from "./delimiter";
-import Link, { navigate } from "../Link";
 import useNews from "../../hooks/useNews";
-
-let elements = [];
 
 const daneParafii = {
   id: -1,
-  nazwa: "Dane Parafii",
-  data: "Przypięty",
-  tresc: (
-    <p>
-      Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na
-      podstronie <Link to="/kontakt">kontakt!</Link>
-    </p>
-  ),
+  title: "Dane Parafii",
+  publicationDate: "Przypięty",
+  content:
+    "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie [kontakt](/kontakt)!",
 };
 
 const error = {
-  nazwa: "Błąd połączenia z bazą danych",
-  data: "01/01/1970",
-  tresc:
+  id: -2,
+  title: "Błąd połączenia z bazą danych",
+  publicationDate: "01/01/1970",
+  content:
     "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
 };
 
@@ -39,30 +33,7 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
   };
 
   useEffect(() => {
-    const cleanup = () => {
-      elements.forEach(function (element) {
-        element.removeEventListener("click", element._clickHandler);
-      });
-      elements = [];
-    };
-    cleanup();
-
-    const newsContent = document.getElementById("newsContent");
-    if (newsContent) {
-      elements = newsContent.querySelectorAll("[data-destination]");
-      elements.forEach(function (element) {
-        const clickHandler = (e) => {
-          navigate(e, element.dataset.destination);
-        };
-
-        element.addEventListener("click", clickHandler);
-        element._clickHandler = clickHandler;
-      });
-    }
-
     adjustHeight(content.current.scrollHeight);
-
-    return cleanup;
   }, [news]);
 
   useEffect(() => {
@@ -77,8 +48,12 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
   return (
     <div id="newsContent" className="center" ref={content}>
       {news.map((post, index) => (
-        <div key={post.id + index}>
-          <News title={post.nazwa} date={post.data} content={post.tresc} />
+        <div key={post.id}>
+          <News
+            title={post.title}
+            date={post.publicationDate}
+            content={post.content}
+          />
           <Delimiter index={index} lastIndex={news.length - 1} />
         </div>
       ))}

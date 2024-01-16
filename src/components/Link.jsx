@@ -2,12 +2,11 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TransitionContext from "../contexts/TransitionContext";
 
-export let navigate = (e, destination) => {};
-
 function Link({ to, children, className }) {
   const history = useHistory();
   const { setTransitioning } = useContext(TransitionContext);
-  const handleClick = (e, destination = to) => {
+  const handleClick = (e) => {
+    if (!to.startsWith("/")) return;
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();
       window.scrollTo({
@@ -17,16 +16,14 @@ function Link({ to, children, className }) {
 
       setTransitioning(true);
       setTimeout(() => {
-        history.push(destination);
+        history.push(to);
         setTransitioning(false);
       }, 200);
     }
   };
 
-  navigate = handleClick;
-
   return (
-    <a className={className} onClick={handleClick} href={to}>
+    <a className={className} onClick={handleClick} href={to} target="_blank">
       {children}
     </a>
   );
