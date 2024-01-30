@@ -46,13 +46,6 @@ function Ogloszenia({ setCurrentScreen }) {
         >
           Mam problem
         </button>
-        <Link
-          to="/pdf/koleda2324_rc1.pdf"
-          type="button"
-          className="btn btn-warning"
-        >
-          Plan kolędy
-        </Link>
         <button onClick={nextWeek} type="button" className="btn btn-success">
           <span id="infoBtnText" className={transitioning ? "invisible" : ""}>
             {current === 0 ? "Następny tydzień" : "Poprzedni tydzień"}
