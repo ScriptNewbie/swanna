@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Link from "../Link";
-import NotificationBell from "../NotificationBell";
 import "./menu.css";
 
 function Menu() {
@@ -24,7 +23,6 @@ function Menu() {
             <br />w Tarnowskich Górach
           </div>
         </Link>
-        <NotificationBell />
       </div>
       <div id="menu">
         <nav className="navbar navbar-expand-lg navbar-dark menu">

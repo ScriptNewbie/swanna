@@ -34,11 +34,10 @@ function Cookies({ setCurrentScreen, adjustHeight }) {
       <br /> <br />
       <div>
         Jeżeli wyrazisz na to zgodę, nasza strona ładuje jednak zawartość stron
-        trzecich takich jak <a href="https://google.com">Google (mapy)</a> czy{" "}
-        <a href="https:/onesignal.com">OneSignal (obsługa wiadomości push)</a>
-        , która może zapisywać i wykorzystywać ciasteczka lub inne mechanizmy do
-        gromadzenia informacji o twoim urządzeniu lub tobie (zgodnie z polityką
-        prywatności wcześniej wspomnianych podmiotów).
+        trzecich - <a href="https://google.com">Google (mapy)</a>, która może
+        zapisywać i wykorzystywać ciasteczka lub inne mechanizmy do gromadzenia
+        informacji o twoim urządzeniu lub tobie (zgodnie z polityką prywatności
+        wcześniej wspomnianego podmiotu).
         <br /> <br />
         Jeżeli nie wyrazisz zgody na ciasteczka, niektóre funkcje strony nie
         będą dostępne. <br />

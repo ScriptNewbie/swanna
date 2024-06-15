@@ -8,7 +8,6 @@ import Kontakt from "./components/kontakt";
 import React, { useContext, useEffect, useState, useRef } from "react";
 import LeftPanel from "./components/leftpanel";
 import Cookies from "js-cookie";
-import OneSignalModule from "./components/onesignal";
 import TransitionContext from "./contexts/TransitionContext";
 import PdfReader from "./components/ogloszenia/pdfReader";
 import CookiesContext from "./contexts/cookiesContext";
@@ -125,8 +124,6 @@ function App({ history }) {
       >
         <Link to="/cookies">Polityka Cookies</Link>
       </div>
-
-      <OneSignalModule />
     </div>
   );
 }
