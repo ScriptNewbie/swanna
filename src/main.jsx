@@ -11,7 +11,10 @@ import App from "./App.jsx";
 import { TransitionProvider } from "./contexts/TransitionContext";
 import { CookiesProvider } from "./contexts/cookiesContext";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
 
 const client = new QueryClient();
 
