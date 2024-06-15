@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import OneSignal from "react-onesignal";
 import "./onesignal.css";
 import CookiesContext from "../../contexts/cookiesContext";
 import CookiesMessage from "../cookies/CookiesMessage";
@@ -11,18 +10,6 @@ function OneSignalModule() {
   const [subscribed, setSubscribed] = useState(false);
   const [works, setWorks] = useState(false);
   const { cookiesEnabled } = useContext(CookiesContext);
-
-  useEffect(() => {
-    if (cookiesEnabled) {
-      OneSignal.on("subscriptionChange", function (subscribed) {
-        setSubscribed(subscribed);
-      });
-      OneSignal.isPushNotificationsEnabled((subscribed) => {
-        setWorks(true);
-        setSubscribed(subscribed);
-      });
-    }
-  }, [cookiesEnabled]);
 
   return (
     <div>
@@ -87,33 +74,6 @@ function OneSignalModule() {
             </div>
 
             <div className="modal-footer">
-              {works && cookiesEnabled && (
-                <button
-                  onClick={() => {
-                    OneSignal.isPushNotificationsEnabled((subscribed) => {
-                      if (subscribed) {
-                        OneSignal.setSubscription(false);
-                      } else {
-                        OneSignal.setSubscription(true).then(() => {
-                          OneSignal.isPushNotificationsEnabled((subscribed) => {
-                            if (!subscribed)
-                              OneSignal.registerForPushNotifications();
-                          });
-                        });
-                      }
-                    });
-                  }}
-                  className={
-                    "btn btn-" + (subscribed ? "danger" : "success") + " m-2"
-                  }
-                >
-                  {subscribed ? (
-                    <span>Anuluj subskrybcję</span>
-                  ) : (
-                    <span>Subskrybuj</span>
-                  )}
-                </button>
-              )}
               {!cookiesEnabled && <CookiesAcceptButton />}
             </div>
           </div>

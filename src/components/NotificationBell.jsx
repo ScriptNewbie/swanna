@@ -2,32 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell as solidBell } from "@fortawesome/free-solid-svg-icons";
 import { faBell as regularBell } from "@fortawesome/free-regular-svg-icons";
-import OneSignal from "react-onesignal";
 import CookiesContext from "../contexts/cookiesContext";
 
 function NotificationBell() {
   const [subscribed, setSubscribed] = useState(false);
   const { cookiesEnabled } = useContext(CookiesContext);
-
-  useEffect(() => {
-    if (cookiesEnabled) {
-      OneSignal.init({
-        appId: "6b57325a-836e-43c3-a551-04928b8e7285",
-        welcomeNotification: {
-          title: "Szczęść Boże!",
-          message:
-            "Jest to automatyczna wiadomość powitalna. Dziękujemy za zapisanie się do powiadomień! Funkcjonalność jest w fazie testów i może nie działać prawidłowo!",
-        },
-      });
-
-      OneSignal.on("subscriptionChange", function (subscribed) {
-        setSubscribed(subscribed);
-      });
-      OneSignal.isPushNotificationsEnabled((subscribed) => {
-        setSubscribed(subscribed);
-      });
-    }
-  }, [cookiesEnabled]);
 
   return (
     <div>
