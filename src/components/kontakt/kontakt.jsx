@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Map from "../map";
+import Link from "../Link";
 import "./kontakt.css";
 
 function Kontakt({ setCurrentScreen, adjustHeight }) {
@@ -42,6 +43,9 @@ function Kontakt({ setCurrentScreen, adjustHeight }) {
         <div className="leftAdditional">
           <b>Numer konta bankowego:</b> <br /> PL 42 1050 1230 1000 0090 3256
           7647
+          <br />
+          <b>Standardy ochrony dzieci:</b> <br /> Znajdują się{" "}
+          <Link to="/pdf/standardy.v1.pdf"> pod tym adresem.</Link>
         </div>
         <div className="rightAdditional">
           <b>Godziny pracy kancelarii:</b>
