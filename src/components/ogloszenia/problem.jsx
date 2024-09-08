@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ApiClient from "../../services/apiClient";
 
-const client = new ApiClient("/backend/mail.php");
+const client = new ApiClient("/api/report-old?what=ogloszenia");
 
 function Problem({ nextWeek, current }) {
   const [response, setResponse] = useState("");
