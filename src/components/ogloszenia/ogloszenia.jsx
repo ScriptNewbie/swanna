@@ -5,6 +5,7 @@ import "./ogloszenia.css";
 import Problem from "./problem";
 import Link from "../Link";
 import PdfDocument from "./pdfDocument";
+import { useAdditionalButton } from "./useAdditionalButton";
 
 const urls = [
   "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf",
@@ -15,6 +16,8 @@ function Ogloszenia({ setCurrentScreen }) {
   const [current, setCurrent] = useState(0);
   const [problemVisible, setProblemVisible] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
+
+  const { data, isSuccess } = useAdditionalButton();
 
   useEffect(() => {
     setCurrentScreen("ogloszenia");
@@ -46,6 +49,15 @@ function Ogloszenia({ setCurrentScreen }) {
         >
           Mam problem
         </button>
+        {isSuccess && data.isEnabled ? (
+          <Link to={data.url}>
+            <button type="button" className="btn btn-warning fadein">
+              {data.title}
+            </button>
+          </Link>
+        ) : (
+          <div></div>
+        )}
         <button onClick={nextWeek} type="button" className="btn btn-success">
           <span id="infoBtnText" className={transitioning ? "invisible" : ""}>
             {current === 0 ? "Następny tydzień" : "Poprzedni tydzień"}
