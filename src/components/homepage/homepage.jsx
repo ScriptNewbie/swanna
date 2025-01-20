@@ -4,12 +4,12 @@ import News from "./news";
 import Delimiter from "./delimiter";
 import useNews from "../../hooks/useNews";
 
-const daneParafii = {
+const pinned = {
   id: -1,
-  title: "Dane Parafii",
+  title: "Witamy na stronie parafii pw. świętej Anny w Tarnowskich Górach!",
   publicationDate: "Przypięty",
   content:
-    "Dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie [kontakt](/kontakt)!",
+    "Porządek nabożeństw i ogłoszenia parafialne znajdziesz na podstronie [porządek nabożeństw](/nabozenstwa), natomiast dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie [kontakt](/kontakt)!",
 };
 
 const error = {
@@ -25,7 +25,7 @@ function Homepage({ setCurrentScreen, adjustHeight }) {
 
   const { data, isError, isSuccess } = useNews();
   const news = isSuccess ? [...data] : [];
-  news.unshift(daneParafii);
+  news.unshift(pinned);
   if (isError) news.push(error);
 
   const handleResize = () => {
