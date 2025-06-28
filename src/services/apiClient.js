@@ -1,7 +1,6 @@
 import axios from "axios";
-
 const client = axios.create({
-  baseURL: "https://api.swanna.net.pl",
+  baseURL: import.meta.env.VITE_API_URL ?? "https://api.swanna.net.pl",
 });
 
 class ApiClient {

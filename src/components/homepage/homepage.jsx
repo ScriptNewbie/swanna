@@ -8,8 +8,9 @@ const pinned = {
   id: -1,
   title: "Witamy na stronie parafii pw. świętej Anny w Tarnowskich Górach!",
   publicationDate: "Przypięty",
-  content:
-    "Porządek nabożeństw i ogłoszenia parafialne znajdziesz na podstronie [porządek nabożeństw](/nabozenstwa), natomiast dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie [kontakt](/kontakt)!",
+  content: `Porządek nabożeństw i ogłoszenia parafialne znajdziesz na podstronie [porządek nabożeństw](/nabozenstwa), natomiast dane parafii tj. adres, telefon czy numer konta bankowego znajdziesz na podstronie [kontakt](/kontakt)!
+    
+  Jeśli masz jakiekolwiek problemy ze stroną, napisz do nas na adres kontakt@swanna.net.pl, możesz też odwiedzić stronę dla starszych urządzeń, znajdującą się pod adresem [old.swanna.net.pl](http://old.swanna.net.pl).`,
 };
 
 const error = {

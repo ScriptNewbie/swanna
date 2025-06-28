@@ -1,19 +1,11 @@
 import { useQuery } from "react-query";
+import ApiClient from "../../services/apiClient";
+
+const apiClient = new ApiClient("/api/custom-button");
 
 export const useAdditionalButton = () => {
   return useQuery({
     queryKey: ["additionalButton"],
-    queryFn: () => {
-      return new Promise((resolve) => {
-        const data = {
-          isEnabled: false,
-          title: "Plan kolędy",
-          url: "/pdf/koleda-rc1.pdf",
-        };
-        setTimeout(() => {
-          resolve(data);
-        }, 50);
-      });
-    },
+    queryFn: apiClient.get,
   });
 };

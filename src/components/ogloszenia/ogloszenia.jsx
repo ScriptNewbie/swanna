@@ -49,9 +49,9 @@ function Ogloszenia({ setCurrentScreen }) {
         >
           Mam problem
         </button>
-        {isSuccess && data.isEnabled ? (
+        {isSuccess && data.enabled ? (
           <Link className="btn btn-warning" to={data.url}>
-            {data.title}
+            {data.name}
           </Link>
         ) : (
           <div></div>
