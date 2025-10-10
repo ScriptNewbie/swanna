@@ -8,8 +8,8 @@ import PdfDocument from "./pdfDocument";
 import { useAdditionalButton } from "./useAdditionalButton";
 
 const urls = [
-  "https://api.swanna.net.pl/ogloszenia/ogloszenia.pdf",
-  "https://api.swanna.net.pl/ogloszenia/next.pdf",
+  "https://api.swanna.net.pl/api/ogloszenia/ogloszenia.pdf",
+  "https://api.swanna.net.pl/api/ogloszenia/next.pdf",
 ];
 
 function Ogloszenia({ setCurrentScreen }) {

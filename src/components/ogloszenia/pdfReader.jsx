@@ -4,7 +4,7 @@ import PdfDocument from "./pdfDocument";
 
 function PdfReader({ setCurrentScreen }) {
   const { id } = useParams();
-  const url = "https://api.swanna.net.pl/files/" + id || "none.pdf";
+  const url = "https://api.swanna.net.pl/api/files/" + id || "none.pdf";
 
   useEffect(() => {
     setCurrentScreen("ogloszenia");

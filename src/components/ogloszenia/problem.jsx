@@ -64,7 +64,7 @@ function Problem({ nextWeek, current }) {
               )}
               <a
                 href={
-                  "https://api.swanna.net.pl/ogloszenia/" +
+                  "https://api.swanna.net.pl/api/ogloszenia/" +
                   (current === 0 ? "ogloszenia.pdf" : "next.pdf")
                 }
                 target="_blank"
