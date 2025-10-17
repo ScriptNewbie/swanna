@@ -4,7 +4,7 @@ import "./version.css";
 
 const isOldVersion = (version: string) => {
   const current = import.meta.env.VITE_APP_VERSION;
-  console.log(current);
+
   if (!version || !current) {
     return false;
   }

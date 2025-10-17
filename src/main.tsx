@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { pdfjs } from "react-pdf";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import "./App.css";
