@@ -1,9 +1,22 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import "./snow.css";
 
 export const Snow = () => {
+  const [isNarrowScreen, setIsNarrowScreen] = useState(
+    window.innerWidth < window.innerHeight
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsNarrowScreen(window.innerWidth < window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const snowflakes = useMemo(() => {
-    const snowflakeCount = 50; // Number of snowflakes
+    const snowflakeCount = isNarrowScreen ? 20 : 50; // 20 for narrow screens, 50 for wide
 
     return Array.from({ length: snowflakeCount }, (_, i) => ({
       id: i,
@@ -13,7 +26,7 @@ export const Snow = () => {
       fontSize: 10 + Math.random() * 20, // Size between 10-30px
       opacity: 0.3 + Math.random() * 0.7, // Opacity between 0.3-1.0
     }));
-  }, []);
+  }, [isNarrowScreen]);
 
   return (
     <div className="snow">
