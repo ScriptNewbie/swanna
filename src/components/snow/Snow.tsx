@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import "./snow.css";
 
 export const Snow = () => {
+  const [isSnowing, setIsSnowing] = useState(true);
   const [isNarrowScreen, setIsNarrowScreen] = useState(
     window.innerWidth < window.innerHeight
   );
@@ -29,22 +30,32 @@ export const Snow = () => {
   }, [isNarrowScreen]);
 
   return (
-    <div className="snow">
-      {snowflakes.map((flake) => (
-        <div
-          key={flake.id}
-          className="snowflake"
-          style={{
-            left: `${flake.left}%`,
-            animationDuration: `${flake.animationDuration}s`,
-            animationDelay: `${flake.animationDelay}s`,
-            fontSize: `${flake.fontSize}px`,
-            opacity: flake.opacity,
-          }}
-        >
-          ❄
+    <>
+      <button
+        className="btn btn-secondary snow-toggle"
+        onClick={() => setIsSnowing(!isSnowing)}
+      >
+        <div>❄</div>
+      </button>
+      {isSnowing && (
+        <div className="snow">
+          {snowflakes.map((flake) => (
+            <div
+              key={flake.id}
+              className="snowflake"
+              style={{
+                left: `${flake.left}%`,
+                animationDuration: `${flake.animationDuration}s`,
+                animationDelay: `${flake.animationDelay}s`,
+                fontSize: `${flake.fontSize}px`,
+                opacity: flake.opacity,
+              }}
+            >
+              ❄
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
