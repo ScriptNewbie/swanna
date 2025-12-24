@@ -14,6 +14,7 @@ import CookiesContext from "./contexts/cookiesContext";
 import CookiesSite from "./components/cookies/Cookies";
 import Link from "./components/Link";
 import Version from "./components/version";
+import { Snow } from "./components/snow/Snow";
 
 function App({ history }) {
   const { transitioning } = useContext(TransitionContext);
@@ -126,6 +127,7 @@ function App({ history }) {
         <Link to="/cookies">Polityka Cookies</Link>
       </div>
       <Version />
+      <Snow />
     </div>
   );
 }
