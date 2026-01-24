@@ -127,7 +127,7 @@ function App({ history }) {
         <Link to="/cookies">Polityka Cookies</Link>
       </div>
       <Version />
-      <Snow />
+      {/* <Snow /> */}
     </div>
   );
 }
