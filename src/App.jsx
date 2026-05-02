@@ -6,7 +6,6 @@ import Historia from "./components/historia";
 import Kontakt from "./components/kontakt";
 import React, { useEffect, useState, useRef } from "react";
 import LeftPanel from "./components/leftpanel";
-import Cookies from "js-cookie";
 import PdfReader from "./components/ogloszenia/pdfReader";
 import CookiesSite from "./components/cookies/Cookies";
 import Link from "./components/Link";
@@ -18,16 +17,10 @@ import { useCookiesContext } from "./contexts/cookiesContext";
 function App() {
   const { transitioning } = useTransitionContext();
   const content = useRef(null);
-  const { cookiesEnabled } = useCookiesContext();
+  const { cookiesEnabled, refreshCookiesExpiry } = useCookiesContext();
 
   useEffect(() => {
-    if (cookiesEnabled) {
-      Cookies.set("allowcookies", "true", {
-        expires: 399,
-        path: "/",
-      });
-    }
-
+    refreshCookiesExpiry();
     document.getElementById("oldBrowserPrompt").style.display = "none";
   }, []);
 
@@ -57,8 +50,8 @@ function App() {
             currentScreen === "ogloszenia"
               ? "mainContentOgloszenia"
               : currentScreen === "historia"
-              ? "mainContentHistoria"
-              : ""
+                ? "mainContentHistoria"
+                : ""
           }
         >
           <div id="fade" className={transitioning ? "fadeout" : "fadein"}>

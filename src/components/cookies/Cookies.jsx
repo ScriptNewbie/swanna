@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useCookiesContext } from "../../contexts/cookiesContext";
+import CookiesAcceptButton from "./CookiesAcceptButton";
+import CookiesRejectButton from "./CookiesRejectButton";
 
 function Cookies({ setCurrentScreen, adjustHeight }) {
   const { cookiesEnabled } = useCookiesContext();

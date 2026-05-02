@@ -6,10 +6,14 @@ type TransitionContextType = {
 };
 
 const TransitionContext = createContext<TransitionContextType | undefined>(
-  undefined
+  undefined,
 );
 
-export const TransitionProvider = ({ children }: { children: React.ReactNode }) => {
+export const TransitionProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [transitioning, setTransitioning] = useState(false);
 
   return (
@@ -22,9 +26,9 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
 export const useTransitionContext = (): TransitionContextType => {
   const context = useContext(TransitionContext);
   if (context === undefined) {
-    throw new Error("useTransitionContext must be used within a TransitionProvider");
+    throw new Error(
+      "useTransitionContext must be used within a TransitionProvider",
+    );
   }
   return context;
 };
-
-export default TransitionContext;
