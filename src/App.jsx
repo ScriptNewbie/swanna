@@ -1,5 +1,4 @@
 import Menu from "./components/menu";
-import { withRouter } from "react-router";
 import { Route, Switch } from "react-router-dom";
 import Homepage from "./components/homepage";
 import Ogloszenia from "./components/ogloszenia";
@@ -16,7 +15,7 @@ import Link from "./components/Link";
 import Version from "./components/version";
 import { Snow } from "./components/snow/Snow";
 
-function App({ history }) {
+function App() {
   const { transitioning } = useContext(TransitionContext);
   const content = useRef(null);
   const { cookiesEnabled } = useContext(CookiesContext);
@@ -106,7 +105,6 @@ function App({ history }) {
                 render={() => (
                   <Homepage
                     setCurrentScreen={setCurrentScreen}
-                    history={history}
                     adjustHeight={adjustHeight}
                   />
                 )}
@@ -132,4 +130,4 @@ function App({ history }) {
   );
 }
 
-export default withRouter(App);
+export default App;
