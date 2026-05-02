@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import CookiesContext from "../../contexts/cookiesContext";
+import React from "react";
 import Cookies from "js-cookie";
+import { useCookiesContext } from "../../contexts/cookiesContext";
 
 function CookiesAcceptButton() {
-  const { setCookiesEnabled } = useContext(CookiesContext);
+  const { setCookiesEnabled } = useCookiesContext();
   return (
     <button
       onClick={() => {

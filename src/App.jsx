@@ -4,21 +4,21 @@ import Homepage from "./components/homepage";
 import Ogloszenia from "./components/ogloszenia";
 import Historia from "./components/historia";
 import Kontakt from "./components/kontakt";
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import LeftPanel from "./components/leftpanel";
 import Cookies from "js-cookie";
-import TransitionContext from "./contexts/TransitionContext";
 import PdfReader from "./components/ogloszenia/pdfReader";
-import CookiesContext from "./contexts/cookiesContext";
 import CookiesSite from "./components/cookies/Cookies";
 import Link from "./components/Link";
 import Version from "./components/version";
 import { Snow } from "./components/snow/Snow";
+import { useTransitionContext } from "./contexts/TransitionContext";
+import { useCookiesContext } from "./contexts/cookiesContext";
 
 function App() {
-  const { transitioning } = useContext(TransitionContext);
+  const { transitioning } = useTransitionContext();
   const content = useRef(null);
-  const { cookiesEnabled } = useContext(CookiesContext);
+  const { cookiesEnabled } = useCookiesContext();
 
   useEffect(() => {
     if (cookiesEnabled) {

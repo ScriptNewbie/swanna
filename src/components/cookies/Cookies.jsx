@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useRef } from "react";
-import CookiesContext from "../../contexts/cookiesContext";
-import CookiesAcceptButton from "./CookiesAcceptButton";
-import CookiesRejectButton from "./CookiesRejectButton";
+import React, { useEffect, useRef } from "react";
+import { useCookiesContext } from "../../contexts/cookiesContext";
 
 function Cookies({ setCurrentScreen, adjustHeight }) {
-  const { cookiesEnabled } = useContext(CookiesContext);
+  const { cookiesEnabled } = useCookiesContext();
   const content = useRef(null);
   const handleResize = () => {
     adjustHeight(content.current.scrollHeight);

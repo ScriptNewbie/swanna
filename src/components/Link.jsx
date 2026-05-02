@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import TransitionContext from "../contexts/TransitionContext";
+import { useTransitionContext } from "../contexts/TransitionContext";
 
 function Link({ to, children, className }) {
   const history = useHistory();
-  const { setTransitioning } = useContext(TransitionContext);
+  const { setTransitioning } = useTransitionContext();
   const handleClick = (e) => {
     if (!to.startsWith("/")) return;
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
