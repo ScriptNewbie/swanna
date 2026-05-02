@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import Cookies from "js-cookie";
 
 const COOKIE_KEY = "allowcookies";
@@ -22,36 +28,37 @@ export const CookiesProvider = ({
     Cookies.get(COOKIE_KEY) === "true",
   );
 
-  const acceptCookies = () => {
+  const acceptCookies = useCallback(() => {
     Cookies.set(COOKIE_KEY, "true", { expires: COOKIE_EXPIRY, path: "/" });
     setCookiesEnabled(true);
-  };
+  }, []);
 
-  const rejectCookies = () => {
+  const rejectCookies = useCallback(() => {
     Cookies.remove(COOKIE_KEY, { path: "/" });
     setCookiesEnabled(false);
-  };
+  }, []);
 
-  const refreshCookiesExpiry = () => {
+  const refreshCookiesExpiry = useCallback(() => {
     const currentValue = Cookies.get(COOKIE_KEY);
     if (currentValue !== "true") return;
     Cookies.set(COOKIE_KEY, "true", {
       expires: COOKIE_EXPIRY,
       path: "/",
     });
-  };
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      cookiesEnabled,
+      acceptCookies,
+      rejectCookies,
+      refreshCookiesExpiry,
+    }),
+    [cookiesEnabled, acceptCookies, rejectCookies, refreshCookiesExpiry],
+  );
 
   return (
-    <CookiesContext.Provider
-      value={{
-        cookiesEnabled,
-        acceptCookies,
-        rejectCookies,
-        refreshCookiesExpiry,
-      }}
-    >
-      {children}
-    </CookiesContext.Provider>
+    <CookiesContext.Provider value={value}>{children}</CookiesContext.Provider>
   );
 };
 
