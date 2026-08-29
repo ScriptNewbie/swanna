@@ -15,9 +15,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@tanstack/react-query": "^5.90.5",
-    "axios": "^1.3.4",
+    "axios": "^1.18.0",
     "bootstrap": "^5.2.3",
-    "js-cookie": "^3.0.1",
+    "js-cookie": "^3.0.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-markdown": "^9.0.1",
@@ -39,6 +39,25 @@
     "globals": "^16.4.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
-    "vite": "^7.1.7"
+    "vite": "^7.3.6"
+  },
+  "overrides": {
+    "@babel/core": "7.29.6",
+    "esbuild": "0.28.1",
+    "flatted": "3.4.2",
+    "follow-redirects": "1.16.0",
+    "form-data": "4.0.6",
+    "js-yaml": "4.3.1",
+    "nanoid": "3.3.18",
+    "postcss": "8.5.23",
+    "micromatch": {
+      "picomatch": "2.3.2"
+    },
+    "tinyglobby": {
+      "picomatch": "4.0.4"
+    },
+    "vite": {
+      "picomatch": "4.0.4"
+    }
   }
 }
