@@ -6,14 +6,17 @@ function Link({
   to,
   children,
   className,
+  onClick,
 }: {
   to: string;
   children?: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   const history = useHistory();
   const { setTransitioning } = useTransitionContext();
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    onClick?.();
     if (!to.startsWith("/")) return;
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();

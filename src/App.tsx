@@ -117,7 +117,6 @@ function App() {
           display:
             currentScreen === "ogloszenia" || !cookiesEnabled ? "none" : "",
         }}
-        className="mt-3"
       >
         <Link to="/cookies">Polityka Cookies</Link>
       </div>

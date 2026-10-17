@@ -31,7 +31,7 @@
   transition: opacity 200ms;
 }
 
-#infoBtnText.invisible {
+#infoBtnText.faded {
   opacity: 0;
 }
 

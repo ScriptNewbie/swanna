@@ -97,19 +97,17 @@ function Kontakt({
         </div>
       </div>
 
-      <div className="row">
-        <div className="col">
-          <div className="ldr">
-            <center>
-              <div className="spinner-border text-secondary" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </center>
-          </div>
-          <div id="map">
-            <div id="mapwrap">
-              <Map className="googleMap" map={currentMap} />
+      <div className="contact-map">
+        <div className="ldr">
+          <center>
+            <div className="spinner" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
+          </center>
+        </div>
+        <div id="map">
+          <div id="mapwrap">
+            <Map className="googleMap" map={currentMap} />
           </div>
         </div>
       </div>

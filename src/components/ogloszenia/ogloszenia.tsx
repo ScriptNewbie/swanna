@@ -49,8 +49,7 @@ function Ogloszenia({
         <button
           type="button"
           className="btn btn-danger"
-          data-bs-toggle="modal"
-          data-bs-target="#problemModal"
+          onClick={() => setProblemVisible(true)}
         >
           Mam problem
         </button>
@@ -62,7 +61,7 @@ function Ogloszenia({
           <div></div>
         )}
         <button onClick={nextWeek} type="button" className="btn btn-success">
-          <span id="infoBtnText" className={transitioning ? "invisible" : ""}>
+          <span id="infoBtnText" className={transitioning ? "faded" : ""}>
             {current === 0 ? "Następny tydzień" : "Poprzedni tydzień"}
           </span>
         </button>
