@@ -1,6 +1,10 @@
-import React from "react";
-
-function Delimiter({ index = 0, lastIndex = 1 }) {
+function Delimiter({
+  index = 0,
+  lastIndex = 1,
+}: {
+  index?: number;
+  lastIndex?: number;
+}) {
   return <>{index < lastIndex ? <div className="linia"></div> : <br />}</>;
 }
 

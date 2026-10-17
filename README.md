@@ -3,7 +3,7 @@
 Feel free to contribute. 
 
 Project structure:
-- Routing is configured in src/App.jsx 
+- Routing is configured in src/App.tsx 
 - Components shared across the app should be placed in src/components
 - Components for given page should be placed inside src/components/\*subpage_name\* directory
 - Hooks should be placed in src/hooks directory

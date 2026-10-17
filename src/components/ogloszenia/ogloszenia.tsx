@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "react-pdf/dist/Page/TextLayer.css";
 
 import "./ogloszenia.css";
@@ -6,13 +6,18 @@ import Problem from "./problem";
 import Link from "../Link";
 import PdfDocument from "./pdfDocument";
 import { useAdditionalButton } from "./useAdditionalButton";
+import type { SetCurrentScreen } from "../../types";
 
 const urls = [
   "https://api.swanna.net.pl/api/ogloszenia/ogloszenia.pdf",
   "https://api.swanna.net.pl/api/ogloszenia/next.pdf",
 ];
 
-function Ogloszenia({ setCurrentScreen }) {
+function Ogloszenia({
+  setCurrentScreen,
+}: {
+  setCurrentScreen: SetCurrentScreen;
+}) {
   const [current, setCurrent] = useState(0);
   const [problemVisible, setProblemVisible] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
@@ -49,7 +54,7 @@ function Ogloszenia({ setCurrentScreen }) {
         >
           Mam problem
         </button>
-        {isSuccess && data.enabled ? (
+        {isSuccess && data?.enabled ? (
           <Link className="btn btn-warning" to={data.url}>
             {data.name}
           </Link>
@@ -64,7 +69,7 @@ function Ogloszenia({ setCurrentScreen }) {
       </div>
       <PdfDocument
         transitioning={transitioning}
-        url={urls[current]}
+        url={urls[current] ?? ""}
         ErrorComponent={ErrorComponent}
       />
       <Problem

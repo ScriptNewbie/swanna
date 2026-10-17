@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import "./homepage.css";
 import News from "./news";
 import Delimiter from "./delimiter";
 import useNews from "../../hooks/useNews";
+import type { NewsPost } from "../../hooks/useNews";
+import type { AdjustHeight, SetCurrentScreen } from "../../types";
 
-const pinned = {
+const pinned: NewsPost = {
   id: -1,
   title: "Witamy na stronie parafii pw. świętej Anny w Tarnowskich Górach!",
   publicationDate: "Przypięty",
@@ -13,7 +15,7 @@ const pinned = {
   Jeśli masz jakiekolwiek problemy ze stroną, napisz do nas na adres kontakt@swanna.net.pl, możesz też odwiedzić stronę dla starszych urządzeń, znajdującą się pod adresem [api.swanna.net.pl/old](http://api.swanna.net.pl/old).`,
 };
 
-const error = {
+const error: NewsPost = {
   id: -2,
   title: "Błąd połączenia z bazą danych",
   publicationDate: "01/01/1970",
@@ -21,20 +23,30 @@ const error = {
     "Z powodu błędu połączenia z bazą danych wyświetlenie aktualności jest niemożliwe. Pozostałe podstrony powinny działać poprawnie.",
 };
 
-function Homepage({ setCurrentScreen, adjustHeight }) {
-  const content = useRef(null);
+function Homepage({
+  setCurrentScreen,
+  adjustHeight,
+}: {
+  setCurrentScreen: SetCurrentScreen;
+  adjustHeight: AdjustHeight;
+}) {
+  const content = useRef<HTMLDivElement>(null);
 
   const { data, isError, isSuccess } = useNews();
-  const news = isSuccess ? [...data] : [];
+  const news = isSuccess && data ? [...data] : [];
   news.unshift(pinned);
   if (isError) news.push(error);
 
   const handleResize = () => {
-    adjustHeight(content.current.scrollHeight);
+    if (content.current) {
+      adjustHeight(content.current.scrollHeight);
+    }
   };
 
   useEffect(() => {
-    adjustHeight(content.current.scrollHeight);
+    if (content.current) {
+      adjustHeight(content.current.scrollHeight);
+    }
   }, [news]);
 
   useEffect(() => {

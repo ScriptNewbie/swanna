@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { Document, Page } from "react-pdf";
 
 function PdfDocument({
@@ -9,15 +9,19 @@ function PdfDocument({
     </div>
   ),
   transitioning = false,
+}: {
+  url: string;
+  ErrorComponent?: ComponentType;
+  transitioning?: boolean;
 }) {
   const getScale = () => {
     return window.matchMedia("(max-width: 370px)").matches
       ? 0.35
       : window.matchMedia("(max-width: 520px)").matches
-      ? 0.55
-      : window.matchMedia("(max-width: 760px)").matches
-      ? 0.8
-      : 1.2;
+        ? 0.55
+        : window.matchMedia("(max-width: 760px)").matches
+          ? 0.8
+          : 1.2;
   };
   const [numPages, setNumPages] = useState(1);
   const [loaded, setLoaded] = useState(false);
@@ -29,7 +33,7 @@ function PdfDocument({
     setWasError(false);
   }, [url]);
 
-  function onDocumentLoadSuccess({ numPages }) {
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
     setLoaded(true);
   }
@@ -58,7 +62,7 @@ function PdfDocument({
             setLoaded(true);
           }}
         >
-          {Array.from(new Array(numPages), (el, index) => (
+          {Array.from({ length: numPages }, (_, index) => (
             <div key={`page_${index + 1}`}>
               <Page
                 renderAnnotationLayer={false}

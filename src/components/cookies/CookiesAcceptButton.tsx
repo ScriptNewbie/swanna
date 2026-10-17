@@ -1,4 +1,3 @@
-import React from "react";
 import { useCookiesContext } from "../../contexts/cookiesContext";
 
 function CookiesAcceptButton() {

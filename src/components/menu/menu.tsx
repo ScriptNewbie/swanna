@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Link from "../Link";
 import "./menu.css";
 
 function Menu() {
   useEffect(() => {
-    document.querySelectorAll(".nav-link").forEach(function (navLink) {
-      navLink.addEventListener("click", function () {
+    document.querySelectorAll(".nav-link").forEach((navLink) => {
+      navLink.addEventListener("click", () => {
         if (window.matchMedia("(max-width: 991px)").matches) {
-          document.querySelector(".navbar-toggler").click();
+          document.querySelector<HTMLElement>(".navbar-toggler")?.click();
         }
       });
     });

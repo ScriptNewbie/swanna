@@ -1,11 +1,19 @@
-import React from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { useHistory } from "react-router-dom";
 import { useTransitionContext } from "../contexts/TransitionContext";
 
-function Link({ to, children, className }) {
+function Link({
+  to,
+  children,
+  className,
+}: {
+  to: string;
+  children?: ReactNode;
+  className?: string;
+}) {
   const history = useHistory();
   const { setTransitioning } = useTransitionContext();
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (!to.startsWith("/")) return;
     if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
       e.preventDefault();

@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import { useState, type Dispatch, type MouseEvent, type SetStateAction } from "react";
 import ApiClient from "../../services/apiClient";
 
-const client = new ApiClient("/api/report-old?what=ogloszenia");
+const client = new ApiClient<string>("/api/report-old?what=ogloszenia");
 
-function Problem({ nextWeek, current }) {
+function Problem({
+  nextWeek,
+  current,
+}: {
+  nextWeek: () => void;
+  current: number;
+  visible: boolean;
+  setVisible: Dispatch<SetStateAction<boolean>>;
+}) {
   const [response, setResponse] = useState("");
   const alertType = response.startsWith("Wys")
     ? "danger"
     : response.startsWith("Kto")
-    ? "secondary"
-    : "success";
+      ? "secondary"
+      : "success";
   return (
     <div id="infoProblem">
       <div
         className="modal fade"
         id="problemModal"
-        tabIndex="-1"
+        tabIndex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -73,8 +81,9 @@ function Problem({ nextWeek, current }) {
                 Link bezpośredni
               </a>
               <button
-                onClick={(e) => {
-                  e.target.classList.add("btn-breathing");
+                onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                  const button = e.currentTarget;
+                  button.classList.add("btn-breathing");
                   client
                     .get()
                     .then((data) => {
@@ -84,7 +93,7 @@ function Problem({ nextWeek, current }) {
                       setResponse("Wystąpił nieoczekiwany błąd!");
                     })
                     .finally(() => {
-                      e.target.classList.remove("btn-breathing");
+                      button.classList.remove("btn-breathing");
                     });
                 }}
                 className="btn btn-success"

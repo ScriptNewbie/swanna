@@ -1,18 +1,29 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useCookiesContext } from "../../contexts/cookiesContext";
 import CookiesAcceptButton from "./CookiesAcceptButton";
 import CookiesRejectButton from "./CookiesRejectButton";
+import type { AdjustHeight, SetCurrentScreen } from "../../types";
 
-function Cookies({ setCurrentScreen, adjustHeight }) {
+function Cookies({
+  setCurrentScreen,
+  adjustHeight,
+}: {
+  setCurrentScreen: SetCurrentScreen;
+  adjustHeight: AdjustHeight;
+}) {
   const { cookiesEnabled } = useCookiesContext();
-  const content = useRef(null);
+  const content = useRef<HTMLDivElement>(null);
   const handleResize = () => {
-    adjustHeight(content.current.scrollHeight);
+    if (content.current) {
+      adjustHeight(content.current.scrollHeight);
+    }
   };
 
   useEffect(() => {
     setCurrentScreen("cookies");
-    adjustHeight(content.current.scrollHeight);
+    if (content.current) {
+      adjustHeight(content.current.scrollHeight);
+    }
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);

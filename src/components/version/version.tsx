@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useVersionQuery } from "./useVersionQuery";
 import "./version.css";
 
-const isOldVersion = (version: string) => {
+const isOldVersion = (version: string | undefined) => {
   const current = import.meta.env.VITE_APP_VERSION;
 
   if (!version || !current) {

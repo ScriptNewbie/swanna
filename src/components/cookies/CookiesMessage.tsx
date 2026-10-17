@@ -1,7 +1,10 @@
-import React from "react";
 import Link from "../Link";
 
-function CookiesMessage({ onNavigateToPolicy = () => {} }) {
+function CookiesMessage({
+  onNavigateToPolicy = () => {},
+}: {
+  onNavigateToPolicy?: () => void;
+}) {
   return (
     <div style={{ textAlign: "center" }}>
       Musisz zaakceptować ciasteczka, by skorzystać z tej funkcji! <br />

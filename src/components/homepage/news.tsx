@@ -1,9 +1,16 @@
-import React from "react";
 import Markdown from "react-markdown";
 import Link from "../Link";
 import remarkGfm from "remark-gfm";
 
-function News({ title, date, content }) {
+function News({
+  title,
+  date,
+  content,
+}: {
+  title: string;
+  date: string;
+  content: string;
+}) {
   return (
     <div>
       <h2 className="title_home">{title}</h2>
@@ -14,7 +21,7 @@ function News({ title, date, content }) {
           components={{
             a(props) {
               const { href, children } = props;
-              return <Link to={href}>{children}</Link>;
+              return <Link to={href ?? ""}>{children}</Link>;
             },
           }}
         >

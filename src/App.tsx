@@ -1,32 +1,36 @@
-import Menu from "./components/menu";
+import { useEffect, useRef, useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import Menu from "./components/menu";
 import Homepage from "./components/homepage";
 import Ogloszenia from "./components/ogloszenia";
 import Historia from "./components/historia";
 import Kontakt from "./components/kontakt";
-import React, { useEffect, useState, useRef } from "react";
 import LeftPanel from "./components/leftpanel";
 import PdfReader from "./components/ogloszenia/pdfReader";
 import CookiesSite from "./components/cookies/Cookies";
 import Link from "./components/Link";
 import Version from "./components/version";
-import { Snow } from "./components/snow/Snow";
+// import { Snow } from "./components/snow/Snow";
 import { useTransitionContext } from "./contexts/TransitionContext";
 import { useCookiesContext } from "./contexts/cookiesContext";
+import type { Screen } from "./types";
 
 function App() {
   const { transitioning } = useTransitionContext();
-  const content = useRef(null);
+  const content = useRef<HTMLDivElement>(null);
   const { cookiesEnabled, refreshCookiesExpiry } = useCookiesContext();
 
   useEffect(() => {
     refreshCookiesExpiry();
-    document.getElementById("oldBrowserPrompt").style.display = "none";
+    const prompt = document.getElementById("oldBrowserPrompt");
+    if (prompt) {
+      prompt.style.display = "none";
+    }
   }, []);
 
-  const [currentScreen, setCurrentScreen] = useState("homepage");
+  const [currentScreen, setCurrentScreen] = useState<Screen>("homepage");
 
-  const adjustHeight = (height) => {
+  const adjustHeight = (height: number) => {
     content.current?.style.setProperty("--height", `${height}px`);
   };
 

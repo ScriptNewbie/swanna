@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "../Link";
 import "./leftpanel.css";
 import Map from "../map";
+import type { MapId } from "../map";
+import type { Screen } from "../../types";
 
-function LeftPanel({ currentScreen }) {
-  const [mapVisible, setMapVisible] = useState("");
+function LeftPanel({ currentScreen }: { currentScreen: Screen }) {
+  const [mapVisible, setMapVisible] = useState<MapId | "">("");
   const [mapClass, setMapClass] = useState("mapHidden");
 
   let currentClass = "";
@@ -36,9 +38,10 @@ function LeftPanel({ currentScreen }) {
   };
 
   useEffect(() => {
-    var sticky = 190;
-    var msze = document.getElementById("msze");
+    const sticky = 190;
+    const msze = document.getElementById("msze");
     function stick() {
+      if (!msze) return;
       if (window.pageYOffset >= sticky) {
         msze.style.position = "fixed";
         msze.style.top = "20px";

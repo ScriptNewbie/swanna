@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PdfDocument from "./pdfDocument";
+import type { SetCurrentScreen } from "../../types";
 
-function PdfReader({ setCurrentScreen }) {
-  const { id } = useParams();
+function PdfReader({
+  setCurrentScreen,
+}: {
+  setCurrentScreen: SetCurrentScreen;
+}) {
+  const { id } = useParams<{ id: string }>();
   const url = "https://api.swanna.net.pl/api/files/" + id || "none.pdf";
 
   useEffect(() => {
@@ -13,7 +18,7 @@ function PdfReader({ setCurrentScreen }) {
   return (
     <div id="infoContent">
       <div id="infoContentButtons" style={{ justifyContent: "center" }}>
-        <a type="button" href={url} target="_blank" className="btn btn-warning">
+        <a href={url} target="_blank" className="btn btn-warning">
           Link bezpośredni
         </a>
       </div>

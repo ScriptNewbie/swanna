@@ -1,19 +1,31 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Map from "../map";
+import type { MapId } from "../map";
 import Link from "../Link";
 import "./kontakt.css";
+import type { AdjustHeight, SetCurrentScreen } from "../../types";
 
-function Kontakt({ setCurrentScreen, adjustHeight }) {
-  const content = useRef(null);
-  const [currentMap, setCurrentMap] = useState("tg");
+function Kontakt({
+  setCurrentScreen,
+  adjustHeight,
+}: {
+  setCurrentScreen: SetCurrentScreen;
+  adjustHeight: AdjustHeight;
+}) {
+  const content = useRef<HTMLDivElement>(null);
+  const [currentMap, setCurrentMap] = useState<MapId>("tg");
 
   const handleResize = () => {
-    adjustHeight(content.current.scrollHeight);
+    if (content.current) {
+      adjustHeight(content.current.scrollHeight);
+    }
   };
 
   useEffect(() => {
     setCurrentScreen("kontakt");
-    adjustHeight(content.current.scrollHeight);
+    if (content.current) {
+      adjustHeight(content.current.scrollHeight);
+    }
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);

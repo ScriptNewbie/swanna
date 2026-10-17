@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../../services/apiClient";
-const apiClient = new ApiClient("/api/app-version");
+const apiClient = new ApiClient<{ version: string }>("/api/app-version");
 export const useVersionQuery = () =>
   useQuery({
     queryKey: ["version"],

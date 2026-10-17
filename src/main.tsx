@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import "./App.css";
-import App from "./App.jsx";
+import App from "./App.tsx";
 import { TransitionProvider } from "./contexts/TransitionContext";
 import { CookiesProvider } from "./contexts/cookiesContext";
 
