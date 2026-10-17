@@ -8,8 +8,8 @@ function PdfReader({
 }: {
   setCurrentScreen: SetCurrentScreen;
 }) {
-  const { id } = useParams<{ id: string }>();
-  const url = "https://api.swanna.net.pl/api/files/" + id || "none.pdf";
+  const { id } = useParams<{ id?: string }>();
+  const url = `https://api.swanna.net.pl/api/files/${id || "none.pdf"}`;
 
   useEffect(() => {
     setCurrentScreen("ogloszenia");
