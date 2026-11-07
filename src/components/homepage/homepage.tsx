@@ -37,24 +37,20 @@ function Homepage({
   news.unshift(pinned);
   if (isError) news.push(error);
 
-  const handleResize = () => {
-    if (content.current) {
-      adjustHeight(content.current.scrollHeight);
-    }
-  };
-
-  useEffect(() => {
-    if (content.current) {
-      adjustHeight(content.current.scrollHeight);
-    }
-  }, [news]);
-
   useEffect(() => {
     setCurrentScreen("homepage");
 
-    window.addEventListener("resize", handleResize);
+    const element = content.current;
+    if (!element) return;
+
+    // Re-measure whenever the content size changes: news loading, window
+    // resizes, and images finishing loading (which grow the layout).
+    const observer = new ResizeObserver(() => {
+      adjustHeight(element.scrollHeight);
+    });
+    observer.observe(element);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
     };
   }, []);
 
