@@ -23,6 +23,11 @@
   margin: 0em;
 }
 
+.post_home img {
+  max-width: 100%;
+  height: auto;
+}
+
 #newsContent {
   width: 710px;
 }
